@@ -2,6 +2,7 @@ package com.example.graduationproject.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Controller;
  * @author xxay
  * @since 2024-02-27
  */
-@Controller
-@RequestMapping("/graduationproject/order")
+@RestController
+@RequestMapping
 public class OrderController {
 
 }
