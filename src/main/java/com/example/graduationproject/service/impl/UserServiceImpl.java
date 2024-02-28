@@ -83,12 +83,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //         User loginuser = JSON.parseObject(JSON.toJSONString(obj),User.class);
             User loginuser = JSON.parseObject(JSON.toJSONString(obj), User.class);
             Map<String, Object> data = new HashMap<>();
-            data.put("name",loginuser.getuName());
-            data.put("avatar",loginuser.getuAvatar());
+//            data.put("name",loginuser.getuName());
+//            data.put("avatar",loginuser.getuAvatar());
+            data.put("uAvatar",loginuser.getuAvatar());
+            data.put("uName",loginuser.getuName());
+            data.put("userdata",loginuser);
             return data;
         }
 
 
         return null;
+    }
+
+    @Override
+    public void userlogout(String token) {
+        Boolean delete = redisTemplate.delete(token);
+
     }
 }

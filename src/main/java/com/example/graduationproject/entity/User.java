@@ -112,7 +112,9 @@ public class User implements Serializable {
      */
     private String uProvince;
 
-    private  String uAvatar;
+    private String uAvatar;
+
+
 
     public Integer getuId() {
         return uId;
@@ -238,7 +240,7 @@ public class User implements Serializable {
         return uAvatar;
     }
 
-    public void setuAvatar(String uAvator) {
+    public void setuAvatar(String uAvatar) {
         this.uAvatar = uAvatar;
     }
 
@@ -260,7 +262,7 @@ public class User implements Serializable {
                 ", uUpdateTime=" + uUpdateTime +
                 ", uBalance=" + uBalance +
                 ", uProvince='" + uProvince + '\'' +
-                ", uAvator='" + uAvatar + '\'' +
+                ", uAvatar='" + uAvatar + '\'' +
                 '}';
     }
 }

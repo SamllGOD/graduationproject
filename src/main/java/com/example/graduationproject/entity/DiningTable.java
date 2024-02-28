@@ -70,25 +70,7 @@ public class DiningTable implements Serializable {
      */
     private String diningName;
 
-    /**
-     * 餐桌号
-     */
-    private Integer diningNumber;
 
-    /**
-     * 0 没有人在用餐  1有客户预定  2正在用餐
-     */
-    private Integer dinningSelectable;
-
-    /**
-     * 餐厅示意图
-     */
-    private String diningMepto;
-
-    /**
-     * 订单id
-     */
-    private Integer diningOrderid;
 
     /**
      * 餐厅所有人即商家
@@ -175,38 +157,6 @@ public class DiningTable implements Serializable {
         this.diningName = diningName;
     }
 
-    public Integer getDiningNumber() {
-        return diningNumber;
-    }
-
-    public void setDiningNumber(Integer diningNumber) {
-        this.diningNumber = diningNumber;
-    }
-
-    public Integer getDinningSelectable() {
-        return dinningSelectable;
-    }
-
-    public void setDinningSelectable(Integer dinningSelectable) {
-        this.dinningSelectable = dinningSelectable;
-    }
-
-    public String getDiningMepto() {
-        return diningMepto;
-    }
-
-    public void setDiningMepto(String diningMepto) {
-        this.diningMepto = diningMepto;
-    }
-
-    public Integer getDiningOrderid() {
-        return diningOrderid;
-    }
-
-    public void setDiningOrderid(Integer diningOrderid) {
-        this.diningOrderid = diningOrderid;
-    }
-
     public Integer getDiningBuid() {
         return diningBuid;
     }
@@ -228,10 +178,7 @@ public class DiningTable implements Serializable {
             ", updateTime = " + updateTime +
             ", diningPhoto = " + diningPhoto +
             ", diningName = " + diningName +
-            ", diningNumber = " + diningNumber +
-            ", dinningSelectable = " + dinningSelectable +
-            ", diningMepto = " + diningMepto +
-            ", diningOrderid = " + diningOrderid +
+
             ", diningBuid = " + diningBuid +
         "}";
     }

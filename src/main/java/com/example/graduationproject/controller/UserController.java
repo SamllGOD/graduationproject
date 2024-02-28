@@ -3,7 +3,6 @@ package com.example.graduationproject.controller;
 import cn.hutool.core.util.StrUtil;
 import com.example.graduationproject.common.vo.Result;
 import com.example.graduationproject.entity.User;
-import com.example.graduationproject.mapper.UserMapper;
 import com.example.graduationproject.service.IUserService;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -37,7 +35,7 @@ public class UserController {
         Map<String,Object>  data =  userService.login(user);
         if (data != null){
 //            redisTemplate.opsForValue().set('l',user,30, TimeUnit.MINUTES);
-            return Result.success(data);
+            return Result.success(data,"登录成功");
         }
         return Result.fail(2002,"账号或密码错误");
     };
@@ -61,6 +59,12 @@ public class UserController {
             return Result.success(data);
         }
             return Result.fail(2003,"登录过期");
+    }
+
+    @GetMapping("/logout")
+    public Result<?> logout(@RequestParam("token") String token){
+        userService.userlogout(token);
+        return Result.success("已退出");
     }
 
 

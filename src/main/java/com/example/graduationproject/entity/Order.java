@@ -26,21 +26,13 @@ public class Order implements Serializable {
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime CreateTime;
+    private LocalDateTime createTime;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime updateTime;
 
     private  String recommend;
-
-    private  Integer diningoptions;
-
-    private  Integer ordering;
-
-    private  Integer orderType;
-
-    private  Integer orderDe;
 
     private  Integer orderBuid;
 
@@ -87,11 +79,11 @@ public class Order implements Serializable {
     }
 
     public LocalDateTime getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(LocalDateTime createTime) {
-        CreateTime = createTime;
+        this.createTime = createTime;
     }
 
     public LocalDateTime getUpdateTime() {
@@ -110,37 +102,6 @@ public class Order implements Serializable {
         this.recommend = recommend;
     }
 
-    public Integer getDiningoptions() {
-        return diningoptions;
-    }
-
-    public void setDiningoptions(Integer diningoptions) {
-        this.diningoptions = diningoptions;
-    }
-
-    public Integer getOrdering() {
-        return ordering;
-    }
-
-    public void setOrdering(Integer ordering) {
-        this.ordering = ordering;
-    }
-
-    public Integer getOrderType() {
-        return orderType;
-    }
-
-    public void setOrderType(Integer orderType) {
-        this.orderType = orderType;
-    }
-
-    public Integer getOrderDe() {
-        return orderDe;
-    }
-
-    public void setOrderDe(Integer orderDe) {
-        this.orderDe = orderDe;
-    }
 
     public Integer getOrderBuid() {
         return orderBuid;
@@ -159,8 +120,6 @@ public class Order implements Serializable {
     }
 
 
-
-
     @Override
     public String toString() {
         return "Order{" +
@@ -169,13 +128,9 @@ public class Order implements Serializable {
                 ", totalPrice=" + totalPrice +
                 ", payStay='" + payStay + '\'' +
                 ", payType='" + payType + '\'' +
-                ", CreateTime=" + CreateTime +
+                ", CreateTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", recommend='" + recommend + '\'' +
-                ", diningoptions=" + diningoptions +
-                ", ordering=" + ordering +
-                ", orderType=" + orderType +
-                ", orderDe=" + orderDe +
                 ", orderBuid=" + orderBuid +
                 ", orderUid=" + orderUid +
                 '}';

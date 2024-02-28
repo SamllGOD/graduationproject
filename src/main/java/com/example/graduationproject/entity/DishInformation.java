@@ -141,20 +141,38 @@ public class DishInformation implements Serializable {
      */
     private Integer dishCartid;
 
-    /**
-     * 订单id
-     */
-    private Integer dishOrderid;
 
     /**
      * 菜品分类id
      */
     private Integer dishDishclaid;
 
-    /**
-     * 商家id
-     */
-    private Integer dishBuid;
+
+    private String dishAddress;
+
+    private String dishCareers;
+
+    private String dishFlavours;
+
+    private String praiseLenS;
+
+    private String praiseLenCs;
+
+    private String praiseLenT;
+
+
+    private String praiseLenG;
+
+
+    private String praiseLenGn;
+
+    private String praiseLenQt;
+
+    private  Integer dishNumber;
+
+
+
+
 
     public Integer getDishInfomationId() {
         return dishInfomationId;
@@ -348,13 +366,6 @@ public class DishInformation implements Serializable {
         this.dishCartid = dishCartid;
     }
 
-    public Integer getDishOrderid() {
-        return dishOrderid;
-    }
-
-    public void setDishOrderid(Integer dishOrderid) {
-        this.dishOrderid = dishOrderid;
-    }
 
     public Integer getDishDishclaid() {
         return dishDishclaid;
@@ -364,44 +375,126 @@ public class DishInformation implements Serializable {
         this.dishDishclaid = dishDishclaid;
     }
 
-    public Integer getDishBuid() {
-        return dishBuid;
+
+
+    public String getDishAddress() {
+        return dishAddress;
     }
 
-    public void setDishBuid(Integer dishBuid) {
-        this.dishBuid = dishBuid;
+    public void setDishAddress(String dishAddress) {
+        this.dishAddress = dishAddress;
+    }
+
+    public String getDishCareers() {
+        return dishCareers;
+    }
+
+    public void setDishCareers(String dishCareers) {
+        this.dishCareers = dishCareers;
+    }
+
+    public String getDishFlavours() {
+        return dishFlavours;
+    }
+
+    public void setDishFlavours(String dishFlavours) {
+        this.dishFlavours = dishFlavours;
+    }
+
+    public String getPraiseLenS() {
+        return praiseLenS;
+    }
+
+    public void setPraiseLenS(String praiseLenS) {
+        this.praiseLenS = praiseLenS;
+    }
+
+    public String getPraiseLenCs() {
+        return praiseLenCs;
+    }
+
+    public void setPraiseLenCs(String praiseLenCs) {
+        this.praiseLenCs = praiseLenCs;
+    }
+
+    public String getPraiseLenT() {
+        return praiseLenT;
+    }
+
+    public void setPraiseLenT(String praiseLenT) {
+        this.praiseLenT = praiseLenT;
+    }
+
+    public String getPraiseLenG() {
+        return praiseLenG;
+    }
+
+    public void setPraiseLenG(String praiseLenG) {
+        this.praiseLenG = praiseLenG;
+    }
+
+    public String getPraiseLenGn() {
+        return praiseLenGn;
+    }
+
+    public void setPraiseLenGn(String praiseLenGn) {
+        this.praiseLenGn = praiseLenGn;
+    }
+
+    public String getPraiseLenQt() {
+        return praiseLenQt;
+    }
+
+    public void setPraiseLenQt(String praiseLenQt) {
+        this.praiseLenQt = praiseLenQt;
+    }
+
+    public Integer getDishNumber() {
+        return dishNumber;
+    }
+
+    public void setDishNumber(Integer dishNumber) {
+        this.dishNumber = dishNumber;
     }
 
     @Override
     public String toString() {
         return "DishInformation{" +
-            "dishInfomationId = " + dishInfomationId +
-            ", dishNo = " + dishNo +
-            ", dishName = " + dishName +
-            ", picture = " + picture +
-            ", price = " + price +
-            ", intredients = " + intredients +
-            ", practice = " + practice +
-            ", preferredQuality = " + preferredQuality +
-            ", hits = " + hits +
-            ", praiseLen = " + praiseLen +
-            ", recommend = " + recommend +
-            ", createTime = " + createTime +
-            ", updateTime = " + updateTime +
-            ", dishHistories = " + dishHistories +
-            ", ingredientsOne = " + ingredientsOne +
-            ", carbohydrate = " + carbohydrate +
-            ", carbohydrates = " + carbohydrates +
-            ", fat = " + fat +
-            ", fibre = " + fibre +
-            ", ingredientsTwo = " + ingredientsTwo +
-            ", ingredientsThree = " + ingredientsThree +
-            ", ingredientsFour = " + ingredientsFour +
-            ", ingredientsFive = " + ingredientsFive +
-            ", dishCartid = " + dishCartid +
-            ", dishOrderid = " + dishOrderid +
-            ", dishDishclaid = " + dishDishclaid +
-            ", dishBuid = " + dishBuid +
-        "}";
+                "dishInfomationId=" + dishInfomationId +
+                ", dishNo='" + dishNo + '\'' +
+                ", dishName='" + dishName + '\'' +
+                ", picture='" + picture + '\'' +
+                ", price=" + price +
+                ", intredients='" + intredients + '\'' +
+                ", practice='" + practice + '\'' +
+                ", preferredQuality='" + preferredQuality + '\'' +
+                ", hits=" + hits +
+                ", praiseLen=" + praiseLen +
+                ", recommend=" + recommend +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", dishHistories='" + dishHistories + '\'' +
+                ", ingredientsOne='" + ingredientsOne + '\'' +
+                ", carbohydrate='" + carbohydrate + '\'' +
+                ", carbohydrates='" + carbohydrates + '\'' +
+                ", fat='" + fat + '\'' +
+                ", fibre='" + fibre + '\'' +
+                ", ingredientsTwo='" + ingredientsTwo + '\'' +
+                ", ingredientsThree='" + ingredientsThree + '\'' +
+                ", ingredientsFour='" + ingredientsFour + '\'' +
+                ", ingredientsFive='" + ingredientsFive + '\'' +
+                ", dishCartid=" + dishCartid +
+                ", dishDishclaid=" + dishDishclaid +
+                ", dishAddress='" + dishAddress + '\'' +
+                ", dishCareers='" + dishCareers + '\'' +
+                ", dishFlavours='" + dishFlavours + '\'' +
+                ", praiseLenS='" + praiseLenS + '\'' +
+                ", praiseLenCs='" + praiseLenCs + '\'' +
+                ", praiseLenT='" + praiseLenT + '\'' +
+                ", praiseLenG='" + praiseLenG + '\'' +
+                ", praiseLenGn='" + praiseLenGn + '\'' +
+                ", praiseLenQt='" + praiseLenQt + '\'' +
+                ", dishNumber=" + dishNumber +
+                '}';
     }
 }

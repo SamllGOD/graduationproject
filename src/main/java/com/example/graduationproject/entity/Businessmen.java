@@ -44,6 +44,8 @@ public class Businessmen implements Serializable {
      */
     private LocalDateTime updateTime;
 
+    private String buTablepto;
+
     public Integer getBusinessmenId() {
         return businessmenId;
     }
@@ -84,14 +86,23 @@ public class Businessmen implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public String getBuTablepto() {
+        return buTablepto;
+    }
+
+    public void setBuTablepto(String buTablepto) {
+        this.buTablepto = buTablepto;
+    }
+
     @Override
     public String toString() {
         return "Businessmen{" +
-            "businessmenId = " + businessmenId +
-            ", businessmenName = " + businessmenName +
-            ", businessPrice = " + businessPrice +
-            ", createTime = " + createTime +
-            ", updateTime = " + updateTime +
-        "}";
+                "businessmenId=" + businessmenId +
+                ", businessmenName='" + businessmenName + '\'' +
+                ", businessPrice=" + businessPrice +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", buTablepto='" + buTablepto + '\'' +
+                '}';
     }
 }

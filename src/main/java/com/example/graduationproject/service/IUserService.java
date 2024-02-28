@@ -22,6 +22,8 @@ public interface IUserService extends IService<User> {
 
     Map<String, Object> getUserInfo(String token);
 
+    void userlogout(String token);
+
 
 //    public Result selectByUsername(User user);
 }
