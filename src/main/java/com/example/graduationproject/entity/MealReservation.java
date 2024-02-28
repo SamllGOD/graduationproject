@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 @TableName("meal_reservation")
 public class MealReservation implements Serializable {
@@ -36,9 +36,9 @@ public class MealReservation implements Serializable {
     private String contactNumber;
 
     /**
-     * 审核状态
+     * 审核状态 0未审核 1通过 2未通过
      */
-    private String examineState;
+    private Integer examineState;
 
     /**
      * 审核回复
@@ -59,6 +59,11 @@ public class MealReservation implements Serializable {
      * 就餐人数
      */
     private Integer numberOfDiners;
+
+    /**
+     * 订单id
+     */
+    private Integer mealOrderid;
 
     public Integer getMealReservationId() {
         return mealReservationId;
@@ -84,11 +89,11 @@ public class MealReservation implements Serializable {
         this.contactNumber = contactNumber;
     }
 
-    public String getExamineState() {
+    public Integer getExamineState() {
         return examineState;
     }
 
-    public void setExamineState(String examineState) {
+    public void setExamineState(Integer examineState) {
         this.examineState = examineState;
     }
 
@@ -124,6 +129,14 @@ public class MealReservation implements Serializable {
         this.numberOfDiners = numberOfDiners;
     }
 
+    public Integer getMealOrderid() {
+        return mealOrderid;
+    }
+
+    public void setMealOrderid(Integer mealOrderid) {
+        this.mealOrderid = mealOrderid;
+    }
+
     @Override
     public String toString() {
         return "MealReservation{" +
@@ -135,6 +148,7 @@ public class MealReservation implements Serializable {
             ", createTime = " + createTime +
             ", updateTime = " + updateTime +
             ", numberOfDiners = " + numberOfDiners +
+            ", mealOrderid = " + mealOrderid +
         "}";
     }
 }

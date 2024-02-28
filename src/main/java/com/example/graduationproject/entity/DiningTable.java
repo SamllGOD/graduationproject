@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 @TableName("dining_table")
 public class DiningTable implements Serializable {
@@ -84,6 +84,16 @@ public class DiningTable implements Serializable {
      * 餐厅示意图
      */
     private String diningMepto;
+
+    /**
+     * 订单id
+     */
+    private Integer diningOrderid;
+
+    /**
+     * 餐厅所有人即商家
+     */
+    private Integer diningBuid;
 
     public Integer getDiningTableId() {
         return diningTableId;
@@ -189,6 +199,22 @@ public class DiningTable implements Serializable {
         this.diningMepto = diningMepto;
     }
 
+    public Integer getDiningOrderid() {
+        return diningOrderid;
+    }
+
+    public void setDiningOrderid(Integer diningOrderid) {
+        this.diningOrderid = diningOrderid;
+    }
+
+    public Integer getDiningBuid() {
+        return diningBuid;
+    }
+
+    public void setDiningBuid(Integer diningBuid) {
+        this.diningBuid = diningBuid;
+    }
+
     @Override
     public String toString() {
         return "DiningTable{" +
@@ -205,6 +231,8 @@ public class DiningTable implements Serializable {
             ", diningNumber = " + diningNumber +
             ", dinningSelectable = " + dinningSelectable +
             ", diningMepto = " + diningMepto +
+            ", diningOrderid = " + diningOrderid +
+            ", diningBuid = " + diningBuid +
         "}";
     }
 }

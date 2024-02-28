@@ -27,27 +27,32 @@ public class UserController {
     @Autowired
     private RedisTemplate redisTemplate;
     @Resource
-   private IUserService userService;
+    private IUserService userService;
 
     @PostMapping("/login")
     public Result<Map<String ,Object>> login(@RequestBody User user){
         if (StrUtil.isBlank(user.getuName()) || StrUtil.isBlank(user.getuPwd())){
             return Result.fail("账号或密码不能为空");
         }
-    Map<String,Object>  data =  userService.login(user);
+        Map<String,Object>  data =  userService.login(user);
         if (data != null){
 //            redisTemplate.opsForValue().set('l',user,30, TimeUnit.MINUTES);
             return Result.success(data);
         }
-       return Result.fail(2002,"账号或密码错误");
+        return Result.fail(2002,"账号或密码错误");
     };
 
-        @PostMapping("/enroll")
+    @PostMapping("/enroll")
     public Result<?> enroller(@RequestBody User user){
-//            Result result = userService.selectByUsername(user);
+        boolean result = userService.selectByUsername(user);
+        if (result){
+            String province = user.getuAddress().get(0);//获取省份
+            user.setuProvince(province);//将省份放入数据库
             userService.save(user);
-            return Result.success("注册成功");
+            return Result.success(200,"注册成功");
         }
+        return Result.fail(2001,"用户名已存在");
+    }
 
 
 }

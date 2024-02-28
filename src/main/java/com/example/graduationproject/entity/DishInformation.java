@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 @TableName("dish_information")
 public class DishInformation implements Serializable {
@@ -135,6 +135,26 @@ public class DishInformation implements Serializable {
      * 优选品质食材五
      */
     private String ingredientsFive;
+
+    /**
+     * 购物车id
+     */
+    private Integer dishCartid;
+
+    /**
+     * 订单id
+     */
+    private Integer dishOrderid;
+
+    /**
+     * 菜品分类id
+     */
+    private Integer dishDishclaid;
+
+    /**
+     * 商家id
+     */
+    private Integer dishBuid;
 
     public Integer getDishInfomationId() {
         return dishInfomationId;
@@ -320,6 +340,38 @@ public class DishInformation implements Serializable {
         this.ingredientsFive = ingredientsFive;
     }
 
+    public Integer getDishCartid() {
+        return dishCartid;
+    }
+
+    public void setDishCartid(Integer dishCartid) {
+        this.dishCartid = dishCartid;
+    }
+
+    public Integer getDishOrderid() {
+        return dishOrderid;
+    }
+
+    public void setDishOrderid(Integer dishOrderid) {
+        this.dishOrderid = dishOrderid;
+    }
+
+    public Integer getDishDishclaid() {
+        return dishDishclaid;
+    }
+
+    public void setDishDishclaid(Integer dishDishclaid) {
+        this.dishDishclaid = dishDishclaid;
+    }
+
+    public Integer getDishBuid() {
+        return dishBuid;
+    }
+
+    public void setDishBuid(Integer dishBuid) {
+        this.dishBuid = dishBuid;
+    }
+
     @Override
     public String toString() {
         return "DishInformation{" +
@@ -346,6 +398,10 @@ public class DishInformation implements Serializable {
             ", ingredientsThree = " + ingredientsThree +
             ", ingredientsFour = " + ingredientsFour +
             ", ingredientsFive = " + ingredientsFive +
+            ", dishCartid = " + dishCartid +
+            ", dishOrderid = " + dishOrderid +
+            ", dishDishclaid = " + dishDishclaid +
+            ", dishBuid = " + dishBuid +
         "}";
     }
 }

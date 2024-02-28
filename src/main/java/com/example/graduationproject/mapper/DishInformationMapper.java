@@ -2,7 +2,6 @@ package com.example.graduationproject.mapper;
 
 import com.example.graduationproject.entity.DishInformation;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * <p>
@@ -10,9 +9,8 @@ import org.mybatis.spring.annotation.MapperScan;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
-
 public interface DishInformationMapper extends BaseMapper<DishInformation> {
 
 }

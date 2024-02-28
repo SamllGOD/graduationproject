@@ -3,6 +3,7 @@ package com.example.graduationproject.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 public class Businessmen implements Serializable {
 
@@ -24,24 +25,14 @@ public class Businessmen implements Serializable {
     private Integer businessmenId;
 
     /**
-     * 客户订单id
+     * 商家名
      */
-    private Integer orderId;
+    private String businessmenName;
 
     /**
-     * 菜品信息id
+     * 商家金额
      */
-    private Integer dishInformationId;
-
-    /**
-     * 菜品分类id
-     */
-    private Integer dishClassificationId;
-
-    /**
-     * 餐厅餐桌id
-     */
-    private Integer diningTableId;
+    private BigDecimal businessPrice;
 
     /**
      * 创建时间
@@ -61,36 +52,20 @@ public class Businessmen implements Serializable {
         this.businessmenId = businessmenId;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public String getBusinessmenName() {
+        return businessmenName;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setBusinessmenName(String businessmenName) {
+        this.businessmenName = businessmenName;
     }
 
-    public Integer getDishInformationId() {
-        return dishInformationId;
+    public BigDecimal getBusinessPrice() {
+        return businessPrice;
     }
 
-    public void setDishInformationId(Integer dishInformationId) {
-        this.dishInformationId = dishInformationId;
-    }
-
-    public Integer getDishClassificationId() {
-        return dishClassificationId;
-    }
-
-    public void setDishClassificationId(Integer dishClassificationId) {
-        this.dishClassificationId = dishClassificationId;
-    }
-
-    public Integer getDiningTableId() {
-        return diningTableId;
-    }
-
-    public void setDiningTableId(Integer diningTableId) {
-        this.diningTableId = diningTableId;
+    public void setBusinessPrice(BigDecimal businessPrice) {
+        this.businessPrice = businessPrice;
     }
 
     public LocalDateTime getCreateTime() {
@@ -113,10 +88,8 @@ public class Businessmen implements Serializable {
     public String toString() {
         return "Businessmen{" +
             "businessmenId = " + businessmenId +
-            ", orderId = " + orderId +
-            ", dishInformationId = " + dishInformationId +
-            ", dishClassificationId = " + dishClassificationId +
-            ", diningTableId = " + diningTableId +
+            ", businessmenName = " + businessmenName +
+            ", businessPrice = " + businessPrice +
             ", createTime = " + createTime +
             ", updateTime = " + updateTime +
         "}";

@@ -10,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 public class Intelcodations implements Serializable {
 
@@ -26,11 +26,6 @@ public class Intelcodations implements Serializable {
      * 地理位置
      */
     private String interedaGelo;
-
-    /**
-     * 推荐菜id
-     */
-    private Integer interedaRealId;
 
     /**
      * 职业推荐
@@ -53,14 +48,6 @@ public class Intelcodations implements Serializable {
         this.interedaGelo = interedaGelo;
     }
 
-    public Integer getInteredaRealId() {
-        return interedaRealId;
-    }
-
-    public void setInteredaRealId(Integer interedaRealId) {
-        this.interedaRealId = interedaRealId;
-    }
-
     public String getCareers() {
         return careers;
     }
@@ -74,7 +61,6 @@ public class Intelcodations implements Serializable {
         return "Intelcodations{" +
             "interedaId = " + interedaId +
             ", interedaGelo = " + interedaGelo +
-            ", interedaRealId = " + interedaRealId +
             ", careers = " + careers +
         "}";
     }

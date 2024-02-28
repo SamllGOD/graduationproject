@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 @TableName("dish_classification")
 public class DishClassification implements Serializable {
@@ -46,9 +46,9 @@ public class DishClassification implements Serializable {
     private LocalDateTime updateTime;
 
     /**
-     * 菜品详情id
+     * 商家id
      */
-    private Integer dishInformationId;
+    private Integer dishclaBuid;
 
     public Integer getDishClassificationId() {
         return dishClassificationId;
@@ -90,12 +90,12 @@ public class DishClassification implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDishInformationId() {
-        return dishInformationId;
+    public Integer getDishclaBuid() {
+        return dishclaBuid;
     }
 
-    public void setDishInformationId(Integer dishInformationId) {
-        this.dishInformationId = dishInformationId;
+    public void setDishclaBuid(Integer dishclaBuid) {
+        this.dishclaBuid = dishclaBuid;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class DishClassification implements Serializable {
             ", recommend = " + recommend +
             ", createTime = " + createTime +
             ", updateTime = " + updateTime +
-            ", dishInformationId = " + dishInformationId +
+            ", dishclaBuid = " + dishclaBuid +
         "}";
     }
 }

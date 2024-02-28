@@ -1,16 +1,22 @@
 package com.example.graduationproject.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.example.graduationproject.config.ListToStringHandler;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import org.apache.ibatis.type.JdbcType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import static com.baomidou.mybatisplus.annotation.FieldStrategy.NOT_NULL;
 
 /**
  * <p>
@@ -18,8 +24,10 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
+@TableName("user")
+
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,14 +39,14 @@ public class User implements Serializable {
     private Integer uId;
 
     /**
-     * 用户密码
-     */
-    private String uPwd;
-
-    /**
      * 用户名
      */
     private String uName;
+
+    /**
+     * 用户密码
+     */
+    private String uPwd;
 
     /**
      * 用户年龄
@@ -48,7 +56,8 @@ public class User implements Serializable {
     /**
      * 用户地址
      */
-    private String uAddress;
+//    @TableField(jdbcType = JdbcType.VARCHAR, insertStrategy = NOT_NULL, typeHandler = ListToStringHandler.class)
+    private List<String> uAddress;
 
     /**
      * 用户口味 清淡 中等 重口
@@ -73,20 +82,9 @@ public class User implements Serializable {
     /**
      * 用户创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime uCreatetime;
-
-    /**
-     * 用户订单id
-     */
-    private Integer uHistoriesOrderId;
-
-    /**
-     * 用户购物车id
-     */
-    private Integer uCarsId;
 
     /**
      * 用户智能推荐
@@ -99,27 +97,21 @@ public class User implements Serializable {
     private Integer whetherBusinessmen;
 
     /**
-     * 商家id
-     */
-    private Integer businessmenId;
-
-    /**
      * 用户更新时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime uUpdateTime;
-
-    /**
-     * 用户预约id
-     */
-    private Integer uMealReservationId;
 
     /**
      * 用户余额
      */
     private BigDecimal uBalance;
+
+    /**
+     * 省份
+     */
+    private String uProvince;
 
     public Integer getuId() {
         return uId;
@@ -127,14 +119,6 @@ public class User implements Serializable {
 
     public void setuId(Integer uId) {
         this.uId = uId;
-    }
-
-    public String getuPwd() {
-        return uPwd;
-    }
-
-    public void setuPwd(String uPwd) {
-        this.uPwd = uPwd;
     }
 
     public String getuName() {
@@ -145,6 +129,14 @@ public class User implements Serializable {
         this.uName = uName;
     }
 
+    public String getuPwd() {
+        return uPwd;
+    }
+
+    public void setuPwd(String uPwd) {
+        this.uPwd = uPwd;
+    }
+
     public Integer getuAge() {
         return uAge;
     }
@@ -153,11 +145,11 @@ public class User implements Serializable {
         this.uAge = uAge;
     }
 
-    public String getuAddress() {
+    public List<String> getuAddress() {
         return uAddress;
     }
 
-    public void setuAddress(String uAddress) {
+    public void setuAddress(List<String> uAddress) {
         this.uAddress = uAddress;
     }
 
@@ -201,22 +193,6 @@ public class User implements Serializable {
         this.uCreatetime = uCreatetime;
     }
 
-    public Integer getuHistoriesOrderId() {
-        return uHistoriesOrderId;
-    }
-
-    public void setuHistoriesOrderId(Integer uHistoriesOrderId) {
-        this.uHistoriesOrderId = uHistoriesOrderId;
-    }
-
-    public Integer getuCarsId() {
-        return uCarsId;
-    }
-
-    public void setuCarsId(Integer uCarsId) {
-        this.uCarsId = uCarsId;
-    }
-
     public String getuRecommend() {
         return uRecommend;
     }
@@ -233,28 +209,12 @@ public class User implements Serializable {
         this.whetherBusinessmen = whetherBusinessmen;
     }
 
-    public Integer getBusinessmenId() {
-        return businessmenId;
-    }
-
-    public void setBusinessmenId(Integer businessmenId) {
-        this.businessmenId = businessmenId;
-    }
-
     public LocalDateTime getuUpdateTime() {
         return uUpdateTime;
     }
 
     public void setuUpdateTime(LocalDateTime uUpdateTime) {
         this.uUpdateTime = uUpdateTime;
-    }
-
-    public Integer getuMealReservationId() {
-        return uMealReservationId;
-    }
-
-    public void setuMealReservationId(Integer uMealReservationId) {
-        this.uMealReservationId = uMealReservationId;
     }
 
     public BigDecimal getuBalance() {
@@ -265,27 +225,32 @@ public class User implements Serializable {
         this.uBalance = uBalance;
     }
 
+    public String getuProvince() {
+        return uProvince;
+    }
+
+    public void setuProvince(String uProvince) {
+        this.uProvince = uProvince;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-            "uId = " + uId +
-            ", uPwd = " + uPwd +
-            ", uName = " + uName +
-            ", uAge = " + uAge +
-            ", uAddress = " + uAddress +
-            ", uFlavours = " + uFlavours +
-            ", uPreferences = " + uPreferences +
-            ", uCareers = " + uCareers +
-            ", uDelete = " + uDelete +
-            ", uCreatetime = " + uCreatetime +
-            ", uHistoriesOrderId = " + uHistoriesOrderId +
-            ", uCarsId = " + uCarsId +
-            ", uRecommend = " + uRecommend +
-            ", whetherBusinessmen = " + whetherBusinessmen +
-            ", businessmenId = " + businessmenId +
-            ", uUpdateTime = " + uUpdateTime +
-            ", uMealReservationId = " + uMealReservationId +
-            ", uBalance = " + uBalance +
-        "}";
+                "uId=" + uId +
+                ", uName='" + uName + '\'' +
+                ", uPwd='" + uPwd + '\'' +
+                ", uAge=" + uAge +
+                ", uAddress=" + uAddress +
+                ", uFlavours='" + uFlavours + '\'' +
+                ", uPreferences='" + uPreferences + '\'' +
+                ", uCareers='" + uCareers + '\'' +
+                ", uDelete=" + uDelete +
+                ", uCreatetime=" + uCreatetime +
+                ", uRecommend='" + uRecommend + '\'' +
+                ", whetherBusinessmen=" + whetherBusinessmen +
+                ", uUpdateTime=" + uUpdateTime +
+                ", uBalance=" + uBalance +
+                ", uProvince='" + uProvince + '\'' +
+                '}';
     }
 }

@@ -18,5 +18,7 @@ public interface IUserService extends IService<User> {
 
     public Map<String ,Object> login(User user);
 
+    boolean selectByUsername(User user);
+
 //    public Result selectByUsername(User user);
 }

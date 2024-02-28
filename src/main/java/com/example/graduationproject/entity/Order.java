@@ -2,97 +2,49 @@ package com.example.graduationproject.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author xxay
- * @since 2024-02-27
- */
+@TableName("order")
 public class Order implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 逻辑删除
-     */
     @TableId(value = "order_center_id", type = IdType.AUTO)
     private Integer orderCenterId;
 
-    /**
-     * 菜品id
-     */
-    private Integer dishId;
-
-    /**
-     * 购买数量
-     */
     private Integer purchaseQuantity;
-
-    /**
-     * 菜品总价格
-     */
     private BigDecimal totalPrice;
-
-    /**
-     * 餐厅id
-     */
-    private Integer diningTableId;
-
-    /**
-     * 支付状态
-     */
     private String payStay;
 
-    /**
-     * 支付类型
-     */
     private String payType;
 
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime CreateTime;
 
-    /**
-     * 更新时间
-     */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime updateTime;
 
-    /**
-     * 智能推荐
-     */
-    private String recommend;
+    private  String recommend;
 
-    /**
-     * 就餐方式 堂食0 自提1 外送2
-     */
-    private Integer diningoptions;
+    private  Integer diningoptions;
 
-    /**
-     * 正在进行：0  已结束进入历史订单中：1
-     */
-    private Integer ordering;
+    private  Integer ordering;
 
-    /**
-     * 正常单：0 预约单：1 未支付：2
-     */
-    private Integer orderType;
+    private  Integer orderType;
 
-    /**
-     * 预约单id
-     */
-    private Integer orderMealId;
+    private  Integer orderDe;
 
-    /**
-     * 逻辑删除  0未删除 1 已删除
-     */
-    private Integer orderDe;
+    private  Integer orderBuid;
+
+    private  Integer orderUid;
 
     public Integer getOrderCenterId() {
         return orderCenterId;
@@ -100,14 +52,6 @@ public class Order implements Serializable {
 
     public void setOrderCenterId(Integer orderCenterId) {
         this.orderCenterId = orderCenterId;
-    }
-
-    public Integer getDishId() {
-        return dishId;
-    }
-
-    public void setDishId(Integer dishId) {
-        this.dishId = dishId;
     }
 
     public Integer getPurchaseQuantity() {
@@ -124,14 +68,6 @@ public class Order implements Serializable {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public Integer getDiningTableId() {
-        return diningTableId;
-    }
-
-    public void setDiningTableId(Integer diningTableId) {
-        this.diningTableId = diningTableId;
     }
 
     public String getPayStay() {
@@ -151,11 +87,11 @@ public class Order implements Serializable {
     }
 
     public LocalDateTime getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public LocalDateTime getUpdateTime() {
@@ -198,14 +134,6 @@ public class Order implements Serializable {
         this.orderType = orderType;
     }
 
-    public Integer getOrderMealId() {
-        return orderMealId;
-    }
-
-    public void setOrderMealId(Integer orderMealId) {
-        this.orderMealId = orderMealId;
-    }
-
     public Integer getOrderDe() {
         return orderDe;
     }
@@ -214,24 +142,42 @@ public class Order implements Serializable {
         this.orderDe = orderDe;
     }
 
+    public Integer getOrderBuid() {
+        return orderBuid;
+    }
+
+    public void setOrderBuid(Integer orderBuid) {
+        this.orderBuid = orderBuid;
+    }
+
+    public Integer getOrderUid() {
+        return orderUid;
+    }
+
+    public void setOrderUid(Integer orderUid) {
+        this.orderUid = orderUid;
+    }
+
+
+
+
     @Override
     public String toString() {
         return "Order{" +
-            "orderCenterId = " + orderCenterId +
-            ", dishId = " + dishId +
-            ", purchaseQuantity = " + purchaseQuantity +
-            ", totalPrice = " + totalPrice +
-            ", diningTableId = " + diningTableId +
-            ", payStay = " + payStay +
-            ", payType = " + payType +
-            ", createTime = " + createTime +
-            ", updateTime = " + updateTime +
-            ", recommend = " + recommend +
-            ", diningoptions = " + diningoptions +
-            ", ordering = " + ordering +
-            ", orderType = " + orderType +
-            ", orderMealId = " + orderMealId +
-            ", orderDe = " + orderDe +
-        "}";
+                "orderCenterId=" + orderCenterId +
+                ", purchaseQuantity=" + purchaseQuantity +
+                ", totalPrice=" + totalPrice +
+                ", payStay='" + payStay + '\'' +
+                ", payType='" + payType + '\'' +
+                ", CreateTime=" + CreateTime +
+                ", updateTime=" + updateTime +
+                ", recommend='" + recommend + '\'' +
+                ", diningoptions=" + diningoptions +
+                ", ordering=" + ordering +
+                ", orderType=" + orderType +
+                ", orderDe=" + orderDe +
+                ", orderBuid=" + orderBuid +
+                ", orderUid=" + orderUid +
+                '}';
     }
 }

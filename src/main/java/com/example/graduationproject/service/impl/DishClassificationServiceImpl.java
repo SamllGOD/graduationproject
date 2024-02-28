@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 @Service
 public class DishClassificationServiceImpl extends ServiceImpl<DishClassificationMapper, DishClassification> implements IDishClassificationService {

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xxay
- * @since 2024-02-27
+ * @since 2024-02-28
  */
 public class Cart implements Serializable {
 
@@ -45,14 +45,14 @@ public class Cart implements Serializable {
     private LocalDateTime updateTime;
 
     /**
-     * 菜品id
-     */
-    private Integer cartDishId;
-
-    /**
-     * 购物车各个菜品的价格
+     * 购物车各个菜品的总价格
      */
     private BigDecimal cartPrice;
+
+    /**
+     * 购物车用户id
+     */
+    private Integer cartUid;
 
     public Integer getCarId() {
         return carId;
@@ -94,20 +94,20 @@ public class Cart implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getCartDishId() {
-        return cartDishId;
-    }
-
-    public void setCartDishId(Integer cartDishId) {
-        this.cartDishId = cartDishId;
-    }
-
     public BigDecimal getCartPrice() {
         return cartPrice;
     }
 
     public void setCartPrice(BigDecimal cartPrice) {
         this.cartPrice = cartPrice;
+    }
+
+    public Integer getCartUid() {
+        return cartUid;
+    }
+
+    public void setCartUid(Integer cartUid) {
+        this.cartUid = cartUid;
     }
 
     @Override
@@ -118,8 +118,8 @@ public class Cart implements Serializable {
             ", checked = " + checked +
             ", createTime = " + createTime +
             ", updateTime = " + updateTime +
-            ", cartDishId = " + cartDishId +
             ", cartPrice = " + cartPrice +
+            ", cartUid = " + cartUid +
         "}";
     }
 }
