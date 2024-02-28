@@ -1,8 +1,7 @@
 package com.example.graduationproject.service.impl;
 
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.example.graduationproject.common.exception.ServiceException;
-import com.example.graduationproject.common.vo.Result;
 import com.example.graduationproject.entity.User;
 import com.example.graduationproject.mapper.UserMapper;
 import com.example.graduationproject.service.IUserService;
@@ -73,5 +72,23 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Map<String, Object> getUserInfo(String token) {
+        //根据token获取redis中的信息
+        Object obj = redisTemplate.opsForValue().get(token);
+        if (obj != null){
+            //反序列化 将redis中的数据反序列化为Json类型的字符串
+//         User loginuser = JSON.parseObject(JSON.toJSONString(obj),User.class);
+            User loginuser = JSON.parseObject(JSON.toJSONString(obj), User.class);
+            Map<String, Object> data = new HashMap<>();
+            data.put("name",loginuser.getuName());
+            data.put("avatar",loginuser.getuAvatar());
+            return data;
+        }
+
+
+        return null;
     }
 }

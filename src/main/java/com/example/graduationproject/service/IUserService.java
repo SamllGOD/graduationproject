@@ -20,5 +20,8 @@ public interface IUserService extends IService<User> {
 
     boolean selectByUsername(User user);
 
+    Map<String, Object> getUserInfo(String token);
+
+
 //    public Result selectByUsername(User user);
 }

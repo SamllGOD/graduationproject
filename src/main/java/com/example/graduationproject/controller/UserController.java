@@ -53,6 +53,15 @@ public class UserController {
         }
         return Result.fail(2001,"用户名已存在");
     }
+    @GetMapping("/info")
+    public Result<Map<String ,Object>> getuserinfo(@RequestParam("token") String token){
+        //根据token来获取用户信息
+        Map<String,Object> data = userService.getUserInfo(token);
+        if (data!=null){
+            return Result.success(data);
+        }
+            return Result.fail(2003,"登录过期");
+    }
 
 
 }
