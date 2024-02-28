@@ -4,19 +4,17 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.example.graduationproject.config.ListToStringHandler;
+import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import org.apache.ibatis.type.JdbcType;
-
+import lombok.Getter;
+import lombok.Setter;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static com.baomidou.mybatisplus.annotation.FieldStrategy.NOT_NULL;
 
 /**
  * <p>
@@ -26,8 +24,9 @@ import static com.baomidou.mybatisplus.annotation.FieldStrategy.NOT_NULL;
  * @author xxay
  * @since 2024-02-28
  */
-@TableName("user")
-
+@TableName(value ="user", autoResultMap = true)
+@Getter
+@Setter
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,7 +55,7 @@ public class User implements Serializable {
     /**
      * 用户地址
      */
-//    @TableField(jdbcType = JdbcType.VARCHAR, insertStrategy = NOT_NULL, typeHandler = ListToStringHandler.class)
+    @TableField(typeHandler = FastjsonTypeHandler.class)
     private List<String> uAddress;
 
     /**
