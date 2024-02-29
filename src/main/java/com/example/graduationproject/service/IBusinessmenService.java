@@ -18,4 +18,6 @@ public interface IBusinessmenService extends IService<Businessmen> {
     Map<String, Object> login(Businessmen businessmen);
 
     void userlogout(String token);
+
+    Map<String, Object> getbusinessInfo(String token);
 }

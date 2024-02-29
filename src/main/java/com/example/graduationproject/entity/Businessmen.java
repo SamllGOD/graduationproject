@@ -68,6 +68,8 @@ public class Businessmen implements Serializable {
 
     private String bPwd;
 
+    private String bAvatar;
+
     public Integer getBusinessmenId() {
         return businessmenId;
     }
@@ -132,6 +134,13 @@ public class Businessmen implements Serializable {
         this.bPwd = bPwd;
     }
 
+    public String getuAvatar() {
+        return bAvatar;
+    }
+
+    public void setuAvatar(String uAvatar) {
+        this.bAvatar = uAvatar;
+    }
 
     @Override
     public String toString() {
@@ -144,6 +153,7 @@ public class Businessmen implements Serializable {
                 ", buTablepto='" + buTablepto + '\'' +
                 ", bName='" + bName + '\'' +
                 ", bPwd='" + bPwd + '\'' +
+                ", uAvatar='" + bAvatar + '\'' +
                 '}';
     }
 }

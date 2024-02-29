@@ -53,5 +53,15 @@ public class BusinessmenController {
     }
 
 
+    @GetMapping("/info")
+    public Result<Map<String ,Object>> getbusinessinfo(@RequestParam("token") String token){
+        //根据token来获取用户信息
+        Map<String,Object> data = businessmenService.getbusinessInfo(token);
+        if (data!=null){
+            return Result.success(data);
+        }
+        return Result.fail(2003,"登录过期");
+    }
+
 
 }

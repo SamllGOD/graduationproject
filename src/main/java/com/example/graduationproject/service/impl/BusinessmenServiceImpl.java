@@ -1,8 +1,10 @@
 package com.example.graduationproject.service.impl;
 
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.graduationproject.entity.Businessmen;
 
+import com.example.graduationproject.entity.User;
 import com.example.graduationproject.mapper.BusinessmenMapper;
 
 import com.example.graduationproject.service.IBusinessmenService;
@@ -60,5 +62,26 @@ public class BusinessmenServiceImpl extends ServiceImpl<BusinessmenMapper, Busin
     @Override
     public void userlogout(String token) {
          redisTemplate.delete(token);
+    }
+
+    @Override
+    public Map<String, Object> getbusinessInfo(String token) {
+        Object obj = redisTemplate.opsForValue().get(token);
+        if (obj != null){
+            //反序列化 将redis中的数据反序列化为Json类型的字符串
+//         User loginuser = JSON.parseObject(JSON.toJSONString(obj),User.class);
+            Businessmen loginbusiness = JSON.parseObject(JSON.toJSONString(obj), Businessmen.class);
+            Map<String, Object> data = new HashMap<>();
+//            data.put("name",loginuser.getuName());
+//            data.put("avatar",loginuser.getuAvatar());
+
+            data.put("uName",loginbusiness.getbName());
+            data.put("uAvator",loginbusiness.getuAvatar());
+            data.put("userdata",loginbusiness);
+            return data;
+        }
+
+
+        return null;
     }
 }
