@@ -2,6 +2,10 @@ package com.example.graduationproject.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +16,9 @@ import java.io.Serializable;
  * @author xxay
  * @since 2024-02-28
  */
+@TableName(value = "dish_information", autoResultMap = true)
+@Getter
+@Setter
 public class Intelcodations implements Serializable {
 
     private static final long serialVersionUID = 1L;

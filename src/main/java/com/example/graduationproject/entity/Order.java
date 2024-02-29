@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@TableName("order")
+@TableName(value = "order",autoResultMap = true)
 public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(value = "order_center_id", type = IdType.AUTO)

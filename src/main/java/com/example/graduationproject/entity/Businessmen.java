@@ -2,6 +2,16 @@ package com.example.graduationproject.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,6 +24,10 @@ import java.time.LocalDateTime;
  * @author xxay
  * @since 2024-02-28
  */
+
+@Getter
+@Setter
+@TableName(value ="businessmen", autoResultMap = true)
 public class Businessmen implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,14 +51,22 @@ public class Businessmen implements Serializable {
     /**
      * 创建时间
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime updateTime;
 
     private String buTablepto;
+
+    private String bName;
+
+    private String bPwd;
 
     public Integer getBusinessmenId() {
         return businessmenId;
@@ -94,6 +116,23 @@ public class Businessmen implements Serializable {
         this.buTablepto = buTablepto;
     }
 
+    public String getbName() {
+        return bName;
+    }
+
+    public void setbName(String bName) {
+        this.bName = bName;
+    }
+
+    public String getbPwd() {
+        return bPwd;
+    }
+
+    public void setbPwd(String bPwd) {
+        this.bPwd = bPwd;
+    }
+
+
     @Override
     public String toString() {
         return "Businessmen{" +
@@ -103,6 +142,10 @@ public class Businessmen implements Serializable {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", buTablepto='" + buTablepto + '\'' +
+                ", bName='" + bName + '\'' +
+                ", bPwd='" + bPwd + '\'' +
                 '}';
     }
 }
+
+

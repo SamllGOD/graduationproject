@@ -10,7 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import java.time.LocalDateTime;
 
-@TableName("table_info")
+@TableName(value = "table_info",autoResultMap = true)
 public class TableInfo {
 
     private static final long serialVersionUID = 1L;

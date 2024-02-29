@@ -114,8 +114,6 @@ public class User implements Serializable {
 
     private String uAvatar;
 
-
-
     public Integer getuId() {
         return uId;
     }
@@ -265,4 +263,155 @@ public class User implements Serializable {
                 ", uAvatar='" + uAvatar + '\'' +
                 '}';
     }
+
+    //
+//    public Integer getuId() {
+//        return uId;
+//    }
+//
+//    public void setuId(Integer uId) {
+//        this.uId = uId;
+//    }
+//
+//    public String getuName() {
+//        return uName;
+//    }
+//
+//    public void setuName(String uName) {
+//        this.uName = uName;
+//    }
+//
+//    public String getuPwd() {
+//        return uPwd;
+//    }
+//
+//    public void setuPwd(String uPwd) {
+//        this.uPwd = uPwd;
+//    }
+//
+//    public Integer getuAge() {
+//        return uAge;
+//    }
+//
+//    public void setuAge(Integer uAge) {
+//        this.uAge = uAge;
+//    }
+//
+//    public List<String> getuAddress() {
+//        return uAddress;
+//    }
+//
+//    public void setuAddress(List<String> uAddress) {
+//        this.uAddress = uAddress;
+//    }
+//
+//    public String getuFlavours() {
+//        return uFlavours;
+//    }
+//
+//    public void setuFlavours(String uFlavours) {
+//        this.uFlavours = uFlavours;
+//    }
+//
+//    public String getuPreferences() {
+//        return uPreferences;
+//    }
+//
+//    public void setuPreferences(String uPreferences) {
+//        this.uPreferences = uPreferences;
+//    }
+//
+//    public String getuCareers() {
+//        return uCareers;
+//    }
+//
+//    public void setuCareers(String uCareers) {
+//        this.uCareers = uCareers;
+//    }
+//
+//    public Integer getuDelete() {
+//        return uDelete;
+//    }
+//
+//    public void setuDelete(Integer uDelete) {
+//        this.uDelete = uDelete;
+//    }
+//
+//    public LocalDateTime getuCreatetime() {
+//        return uCreatetime;
+//    }
+//
+//    public void setuCreatetime(LocalDateTime uCreatetime) {
+//        this.uCreatetime = uCreatetime;
+//    }
+//
+//    public String getuRecommend() {
+//        return uRecommend;
+//    }
+//
+//    public void setuRecommend(String uRecommend) {
+//        this.uRecommend = uRecommend;
+//    }
+//
+//    public Integer getWhetherBusinessmen() {
+//        return whetherBusinessmen;
+//    }
+//
+//    public void setWhetherBusinessmen(Integer whetherBusinessmen) {
+//        this.whetherBusinessmen = whetherBusinessmen;
+//    }
+//
+//    public LocalDateTime getuUpdateTime() {
+//        return uUpdateTime;
+//    }
+//
+//    public void setuUpdateTime(LocalDateTime uUpdateTime) {
+//        this.uUpdateTime = uUpdateTime;
+//    }
+//
+//    public BigDecimal getuBalance() {
+//        return uBalance;
+//    }
+//
+//    public void setuBalance(BigDecimal uBalance) {
+//        this.uBalance = uBalance;
+//    }
+//
+//    public String getuProvince() {
+//        return uProvince;
+//    }
+//
+//    public void setuProvince(String uProvince) {
+//        this.uProvince = uProvince;
+//    }
+//
+//    public String getuAvatar() {
+//        return uAvatar;
+//    }
+//
+//    public void setuAvatar(String uAvatar) {
+//        this.uAvatar = uAvatar;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "uId=" + uId +
+//                ", uName='" + uName + '\'' +
+//                ", uPwd='" + uPwd + '\'' +
+//                ", uAge=" + uAge +
+//                ", uAddress=" + uAddress +
+//                ", uFlavours='" + uFlavours + '\'' +
+//                ", uPreferences='" + uPreferences + '\'' +
+//                ", uCareers='" + uCareers + '\'' +
+//                ", uDelete=" + uDelete +
+//                ", uCreatetime=" + uCreatetime +
+//                ", uRecommend='" + uRecommend + '\'' +
+//                ", whetherBusinessmen=" + whetherBusinessmen +
+//                ", uUpdateTime=" + uUpdateTime +
+//                ", uBalance=" + uBalance +
+//                ", uProvince='" + uProvince + '\'' +
+//                ", uAvatar='" + uAvatar + '\'' +
+//                '}';
+//    }
 }
