@@ -90,6 +90,8 @@ public class DiningTable implements Serializable {
      */
     private Integer diningBuid;
 
+    private Integer dintableNumber;
+
     public Integer getDiningTableId() {
         return diningTableId;
     }
@@ -178,21 +180,29 @@ public class DiningTable implements Serializable {
         this.diningBuid = diningBuid;
     }
 
+    public Integer getDintableNumber() {
+        return dintableNumber;
+    }
+
+    public void setDintableNumber(Integer dintableNumber) {
+        this.dintableNumber = dintableNumber;
+    }
+
     @Override
     public String toString() {
         return "DiningTable{" +
-            "diningTableId = " + diningTableId +
-            ", tableType = " + tableType +
-            ", seatingCapacity = " + seatingCapacity +
-            ", details = " + details +
-            ", hits = " + hits +
-            ", recommend = " + recommend +
-            ", createTime = " + createTime +
-            ", updateTime = " + updateTime +
-            ", diningPhoto = " + diningPhoto +
-            ", diningName = " + diningName +
-
-            ", diningBuid = " + diningBuid +
-        "}";
+                "diningTableId=" + diningTableId +
+                ", tableType='" + tableType + '\'' +
+                ", seatingCapacity=" + seatingCapacity +
+                ", details='" + details + '\'' +
+                ", hits=" + hits +
+                ", recommend=" + recommend +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", diningPhoto='" + diningPhoto + '\'' +
+                ", diningName='" + diningName + '\'' +
+                ", diningBuid=" + diningBuid +
+                ", dintableNumber=" + dintableNumber +
+                '}';
     }
 }

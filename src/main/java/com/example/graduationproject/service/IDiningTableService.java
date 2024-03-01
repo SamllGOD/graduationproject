@@ -3,6 +3,8 @@ package com.example.graduationproject.service;
 import com.example.graduationproject.entity.DiningTable;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Map;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IDiningTableService extends IService<DiningTable> {
 
+    Map<String,Object> setredis(String busingssid);
+
+
+
+    Object getdininginfo(String busingssid);
 }
