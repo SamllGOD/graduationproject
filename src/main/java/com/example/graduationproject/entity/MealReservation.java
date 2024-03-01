@@ -33,6 +33,8 @@ public class MealReservation implements Serializable {
     /**
      * 就餐时间
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime realTime;
 
     /**

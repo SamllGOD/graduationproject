@@ -38,6 +38,15 @@ public class Order implements Serializable {
 
     private  Integer orderUid;
 
+    private Integer diningoptions;
+
+    private Integer ordering;
+
+    private Integer ordertype;
+
+    private Integer orderDe;
+
+
     public Integer getOrderCenterId() {
         return orderCenterId;
     }
@@ -119,6 +128,37 @@ public class Order implements Serializable {
         this.orderUid = orderUid;
     }
 
+    public Integer getDiningoptions() {
+        return diningoptions;
+    }
+
+    public void setDiningoptions(Integer diningoptions) {
+        this.diningoptions = diningoptions;
+    }
+
+    public Integer getOrdering() {
+        return ordering;
+    }
+
+    public void setOrdering(Integer ordering) {
+        this.ordering = ordering;
+    }
+
+    public Integer getOrdertype() {
+        return ordertype;
+    }
+
+    public void setOrdertype(Integer ordertype) {
+        this.ordertype = ordertype;
+    }
+
+    public Integer getOrderDe() {
+        return orderDe;
+    }
+
+    public void setOrderDe(Integer orderDe) {
+        this.orderDe = orderDe;
+    }
 
     @Override
     public String toString() {
@@ -128,11 +168,15 @@ public class Order implements Serializable {
                 ", totalPrice=" + totalPrice +
                 ", payStay='" + payStay + '\'' +
                 ", payType='" + payType + '\'' +
-                ", CreateTime=" + createTime +
+                ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", recommend='" + recommend + '\'' +
                 ", orderBuid=" + orderBuid +
                 ", orderUid=" + orderUid +
+                ", diningoptions=" + diningoptions +
+                ", ordering=" + ordering +
+                ", ordertype=" + ordertype +
+                ", orderDe=" + orderDe +
                 '}';
     }
 }

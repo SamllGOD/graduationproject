@@ -28,13 +28,6 @@ public class Orderinfo {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime updatetime;
 
-    private Integer diningoptions;
-
-    private Integer ordering;
-
-    private Integer ordertype;
-
-    private Integer orderDe;
 
 
     public Integer getCreateorderId() {
@@ -77,50 +70,14 @@ public class Orderinfo {
         this.updatetime = updatetime;
     }
 
-    public Integer getDiningoptions() {
-        return diningoptions;
-    }
-
-    public void setDiningoptions(Integer diningoptions) {
-        this.diningoptions = diningoptions;
-    }
-
-    public Integer getOrdering() {
-        return ordering;
-    }
-
-    public void setOrdering(Integer ordering) {
-        this.ordering = ordering;
-    }
-
-    public Integer getOrdertype() {
-        return ordertype;
-    }
-
-    public void setOrdertype(Integer ordertype) {
-        this.ordertype = ordertype;
-    }
-
-    public Integer getOrderDe() {
-        return orderDe;
-    }
-
-    public void setOrderDe(Integer orderDe) {
-        this.orderDe = orderDe;
-    }
-
     @Override
     public String toString() {
         return "Orderinfo{" +
                 "createorderId=" + createorderId +
                 ", orderId=" + orderId +
                 ", dishInfoid=" + dishInfoid +
-                ", CreateTime=" + createtime +
-                ", updateTime=" + updatetime +
-                ", diningoptions=" + diningoptions +
-                ", ordering=" + ordering +
-                ", ordertype=" + ordertype +
-                ", orderDe=" + orderDe +
+                ", createtime=" + createtime +
+                ", updatetime=" + updatetime +
                 '}';
     }
 }

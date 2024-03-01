@@ -150,12 +150,6 @@ public class DishInformation implements Serializable {
     private String ingredientsFive;
 
     /**
-     * 购物车id
-     */
-    private Integer dishCartid;
-
-
-    /**
      * 菜品分类id
      */
     private Integer dishDishclaid;
@@ -181,7 +175,9 @@ public class DishInformation implements Serializable {
 
     private String praiseLenQt;
 
-    private  Integer dishNumber;
+   private Integer dishBuid;
+
+   private String dishType;
 
 
 
@@ -371,14 +367,6 @@ public class DishInformation implements Serializable {
         this.ingredientsFive = ingredientsFive;
     }
 
-    public Integer getDishCartid() {
-        return dishCartid;
-    }
-
-    public void setDishCartid(Integer dishCartid) {
-        this.dishCartid = dishCartid;
-    }
-
 
     public Integer getDishDishclaid() {
         return dishDishclaid;
@@ -462,12 +450,20 @@ public class DishInformation implements Serializable {
         this.praiseLenQt = praiseLenQt;
     }
 
-    public Integer getDishNumber() {
-        return dishNumber;
+    public Integer getDishBuid() {
+        return dishBuid;
     }
 
-    public void setDishNumber(Integer dishNumber) {
-        this.dishNumber = dishNumber;
+    public void setDishBuid(Integer dishBuid) {
+        this.dishBuid = dishBuid;
+    }
+
+    public String getDishType() {
+        return dishType;
+    }
+
+    public void setDishType(String dishType) {
+        this.dishType = dishType;
     }
 
     @Override
@@ -496,7 +492,6 @@ public class DishInformation implements Serializable {
                 ", ingredientsThree='" + ingredientsThree + '\'' +
                 ", ingredientsFour='" + ingredientsFour + '\'' +
                 ", ingredientsFive='" + ingredientsFive + '\'' +
-                ", dishCartid=" + dishCartid +
                 ", dishDishclaid=" + dishDishclaid +
                 ", dishAddress='" + dishAddress + '\'' +
                 ", dishCareers='" + dishCareers + '\'' +
@@ -507,7 +502,8 @@ public class DishInformation implements Serializable {
                 ", praiseLenG='" + praiseLenG + '\'' +
                 ", praiseLenGn='" + praiseLenGn + '\'' +
                 ", praiseLenQt='" + praiseLenQt + '\'' +
-                ", dishNumber=" + dishNumber +
+                ", dishBuid=" + dishBuid +
+                ", dishType='" + dishType + '\'' +
                 '}';
     }
 }
