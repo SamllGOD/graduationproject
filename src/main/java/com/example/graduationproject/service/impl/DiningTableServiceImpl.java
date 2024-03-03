@@ -50,10 +50,17 @@ public class DiningTableServiceImpl extends ServiceImpl<DiningTableMapper, Dinin
     //实现获取餐厅信息
     @Override
     public Object getdininginfo(String token) {
-
         Object o = redisTemplate.opsForValue().get(token);
-
             return o;
+    }
 
+
+    //根据餐厅餐桌id获取餐桌
+    @Override
+    public Map<String,Object> getmessagefordinid(String tableid) {
+        DiningTable tablemessage = this.baseMapper.selectById(tableid);
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("tabledata",tablemessage);
+        return data;
     }
 }

@@ -1,13 +1,11 @@
 package com.example.graduationproject.controller;
 
 import com.example.graduationproject.common.vo.Result;
+import com.example.graduationproject.entity.DishInformation;
 import com.example.graduationproject.service.IDishInformationService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -39,5 +37,18 @@ public class DishInformationController {
             return Result.success(data);
         }
         return Result.fail(2001,"为获取到消息");
+    }
+    @GetMapping("getdishinfoindishid")
+    public  Result<?> getdishmessagefordishid(@RequestParam("dishid") String dishid){
+     Map<String,Object> data =  iDishInformationService.getdishmessagefordishid(dishid);
+     if (data != null){
+         return Result.success(data);
+     }
+     return  Result.fail(2001,"为获取到消息");
+    }
+    @PostMapping("adddish")
+    public Result<?> adddish(@RequestBody DishInformation dishInformation){
+        iDishInformationService.save(dishInformation);
+        return Result.success("添加成功");
     }
 }

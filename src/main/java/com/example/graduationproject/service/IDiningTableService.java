@@ -20,4 +20,6 @@ public interface IDiningTableService extends IService<DiningTable> {
 
 
     Object getdininginfo(String busingssid);
+
+    Map<String,Object> getmessagefordinid(String tableid);
 }

@@ -15,4 +15,8 @@ import java.util.List;
  */
 public interface DishInformationMapper extends BaseMapper<DishInformation> {
    List<DishInformation> getAllByBusinessId(String buid);
+
+   DishInformation getDishmessageByDishId(String dishid);
+
+   List<DishInformation> getDishByDishId(String orderbuid);
 }

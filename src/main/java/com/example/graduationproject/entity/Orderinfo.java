@@ -28,6 +28,8 @@ public class Orderinfo {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime updatetime;
 
+    private Integer orderMeals;
+
 
 
     public Integer getCreateorderId() {
@@ -70,6 +72,15 @@ public class Orderinfo {
         this.updatetime = updatetime;
     }
 
+
+    public Integer getOrderMeals() {
+        return orderMeals;
+    }
+
+    public void setOrderMeals(Integer orderMeals) {
+        this.orderMeals = orderMeals;
+    }
+
     @Override
     public String toString() {
         return "Orderinfo{" +
@@ -78,6 +89,7 @@ public class Orderinfo {
                 ", dishInfoid=" + dishInfoid +
                 ", createtime=" + createtime +
                 ", updatetime=" + updatetime +
+                ", orderMeals=" + orderMeals +
                 '}';
     }
 }

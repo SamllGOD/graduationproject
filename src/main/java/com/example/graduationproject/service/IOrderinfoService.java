@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 import com.example.graduationproject.entity.Orderinfo;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  *  服务类
@@ -14,4 +17,10 @@ import com.example.graduationproject.entity.Orderinfo;
  */
 public interface IOrderinfoService extends IService<Orderinfo> {
 
+
+    Map<String,Object> getOrderCenterIdByBusinessId(String businessId);
+
+    Map<String, Object> getOrderDishByOrderId(String orderid);
+
+    Map<String, Object> getDishByOrderId(String[] orderid);
 }

@@ -1,5 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.graduationproject.mapper.OrderinfoMapper">
+    <resultMap id="getdishmessage" type="java.util.HashMap">
+        <id column="dish_infomation_id" property="dishInfomationId" />
+        <result column="price" property="price" />
+        <result column="dish_name" property="dishName" />
+        <result column="picture" property="picture" />
+        <result column="dish_no" property="dishNo" />
+
+        <association property="orderinfo" javaType="com.example.graduationproject.entity.Orderinfo">
+            <result column="order_meals" property="orderMeals" />
+        </association>
+        <association property="diningtable" javaType="com.example.graduationproject.entity.DiningTable">
+            <result column="dining_name" property="diningName" />
+        </association>
+            <association property="tableInfo" javaType="com.example.graduationproject.entity.TableInfo">
+                <result column="table_number" property="tableNumber" />
+            </association>
+
+
+    </resultMap>
+    <!--根据订单id获取菜品订单状态 菜品id 创建的订单订单-->
+    <select id="getDishByOrderid"
+            parameterType="java.util.List"
+            resultMap="getdishmessage">
+<!--        SELECT-->
+<!--        dish_infomation_id,-->
+<!--        price,-->
+<!--        dish_name,-->
+<!--        picture,-->
+<!--        dish_no-->
+<!--        from-->
+<!--            dish_information-->
+<!--        WHERE-->
+<!--            dish_infomation_id-->
+<!--                  in(-->
+<!--        <foreach collection="dishidlist" item="idlist" separator=",">-->
+<!--                    #{idlist}-->
+<!--        </foreach>-->
+<!--                      )-->
+<!--        ORDER BY price DESC-->
+        SELECT
+            dish_infomation_id,
+            price,
+            dish_name,
+            picture,
+            order_meals,
+            table_number,
+            dish_no,
+           dining_name
+        from
+            dish_information
+                INNER JOIN orderinfo
+                    ON orderinfo.dish_infoid = dish_information.dish_infomation_id
+                INNER JOIN `order` on orderinfo.order_id = `order`.order_center_id
+                INNER JOIN table_info ON `order`.order_dinid = table_info.table_id
+                 INNER JOIN dining_table on table_info.table_diningid = dining_table.dining_table_id
+        WHERE dish_infomation_id
+                  in
+              (
+                  <foreach collection="dishidlist" item="idlist" separator=",">
+                      #{idlist}
+                  </foreach>
+        )
+        ORDER BY price DESC
+    </select>
+
+
+    <resultMap id="getOrderInfoMap" type="java.util.HashMap">
+        <result column="order_meals" property="orderMeals" />
+        <result column="dish_infoid" property="dishInfoid" />
+    </resultMap>
+    <select id="getOrderMealsByOrderId"
+            resultMap="getOrderInfoMap"
+            parameterType="String">
+        SELECT order_meals,dish_infoid
+        FROM orderinfo
+        where order_id = #{orderid}
+    </select>
+
+
+<resultMap id="getOrderByBuIdMap" type="java.util.HashMap">
+    <id column="order_center_id" property="orderCenterId" />
+    <result column="diningoptions" property="diningoptions" />
+    <result column="total_price" property="totalPrice" />
+    <result column="ordering" property="ordering" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+</resultMap>
+    <select id="getOrderByBuId"
+            parameterType="String"
+            resultMap="getOrderByBuIdMap">
+        SELECT order_center_id,
+               diningoptions,
+               total_price,
+               ordering,
+               create_time,
+               update_time
+        FROM `order`
+        WHERE order_buid = #{buid}
+    </select>
+
+
+
 
 </mapper>

@@ -45,4 +45,17 @@ public class DishInformationServiceImpl extends ServiceImpl<DishInformationMappe
         Object o = redisTemplate.opsForValue().get(token);
         return o;
     }
+
+    @Override
+    public Map<String, Object> getdishmessagefordishid(String dishid) {
+        DishInformation dishInformation = this.baseMapper.getDishmessageByDishId(dishid);
+            if (dishInformation != null){
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("dishdata",dishInformation);
+                return map;
+            }
+        return null;
+    }
+
+
 }

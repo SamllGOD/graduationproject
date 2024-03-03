@@ -14,6 +14,44 @@
             dish_buid = #{buid}
 
 
+
+
     </select>
+
+    <select id="getDishmessageByDishId"
+            resultType="com.example.graduationproject.entity.DishInformation"
+            parameterType="String">
+        SELECT
+            *
+        FROM
+            dish_information
+        WHERE
+            dish_infomation_id = #{dishid}
+
+
+
+    </select>
+
+<!--根据菜品id获取菜品名 价格 图片-->
+    <select id="getDishByDishId"
+            resultType="com.example.graduationproject.entity.DishInformation"
+            parameterType="String">
+        SELECT
+            price,
+            dish_name,
+            picture
+        from
+            dish_information
+        WHERE
+            dish_infomation_id
+                in
+            #{dishid}
+        ORDER BY
+            price
+                DESC
+
+    </select>
+
+
 
 </mapper>

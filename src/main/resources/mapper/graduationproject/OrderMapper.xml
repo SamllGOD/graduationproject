@@ -2,4 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.graduationproject.mapper.OrderMapper">
 
+<select id="getOrderCenterIdByBusinessId" resultType="com.example.graduationproject.entity.Order" parameterType="String">
+    SELECT
+        order_center_id,diningoptions,
+           total_price,ordering,
+           create_time,update_time
+    FROM
+        `order`
+    WHERE order_buid = #{buid}
+</select>
+
+
+
 </mapper>

@@ -20,4 +20,8 @@ public interface IDishInformationService extends IService<DishInformation> {
     Map<String ,Object> setredis(String businessid);
 
     Object dishinfo(String token);
+
+    Map<String, Object> getdishmessagefordishid(String dishid);
+
+
 }
