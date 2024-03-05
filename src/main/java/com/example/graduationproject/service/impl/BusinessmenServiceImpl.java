@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -83,5 +84,21 @@ public class BusinessmenServiceImpl extends ServiceImpl<BusinessmenMapper, Busin
 
 
         return null;
+    }
+
+    @Override
+    public void upImgbybuid(String imgString, String buid) {
+
+        this.baseMapper.UpdateDiningImgByBusinessId(imgString,buid);
+        return;
+    }
+
+    @Override
+    public Map<String, Object> getdiningimg(String buid) {
+        List<Map<String, Object>> maps = this.baseMapper.selectDiningImgBybuId(buid);
+        System.out.println(maps.get(0));
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("diningimg",maps.get(0));
+        return map;
     }
 }

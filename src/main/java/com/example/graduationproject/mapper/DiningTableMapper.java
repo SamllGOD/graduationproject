@@ -20,5 +20,7 @@ public interface DiningTableMapper extends BaseMapper<DiningTable> {
 //      <!--    &#45;&#45; 根据商家id获取商家餐桌类型信息-->
     public List<Map<String,Object>> getBusinessDining(String buid);
 
+          void updateTableByTableId(DiningTable diningTable);
+
 
 }

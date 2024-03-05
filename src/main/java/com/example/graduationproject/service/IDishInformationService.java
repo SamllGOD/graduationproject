@@ -4,6 +4,7 @@ import com.example.graduationproject.common.vo.Result;
 import com.example.graduationproject.entity.DishInformation;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,4 +26,10 @@ public interface IDishInformationService extends IService<DishInformation> {
 
 
     Map<String, Object> getalldishmessage();
+
+    Map<String, Object> getdishbydishtype(String dishtype);
+
+    Map<String, Object> getDishbydishcategory(String category);
+
+    Map<String, Object> getdishbydishaddressordishcareers(String address, String careers);
 }

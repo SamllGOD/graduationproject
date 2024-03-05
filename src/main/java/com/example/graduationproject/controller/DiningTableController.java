@@ -1,14 +1,12 @@
 package com.example.graduationproject.controller;
 
 import com.example.graduationproject.common.vo.Result;
+import com.example.graduationproject.entity.DiningTable;
 import com.example.graduationproject.service.IDiningTableService;
 import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -27,6 +25,7 @@ public class DiningTableController {
     private RedisTemplate redisTemplate;
     @Resource
    private IDiningTableService diningTableService;
+
     @GetMapping("dinsetredis")
     public Result<?> dinsetredis(@RequestParam("bid") String busingssid) {
         Object data = diningTableService.setredis(busingssid);
@@ -65,6 +64,14 @@ public class DiningTableController {
             return Result.success(data);
         }
         return Result.fail("未找到数据");
+    }
+
+
+    @PatchMapping("upeTableByDiningTableId")
+    public Result<?> upeTableByDiningTableId(@RequestBody DiningTable diningTable){
+        System.out.println(diningTable);
+        diningTableService.upeTableByDiningTableId(diningTable);
+        return Result.success("修改成功");
     }
 
 

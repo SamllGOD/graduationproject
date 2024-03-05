@@ -62,6 +62,20 @@ public class BusinessmenController {
         }
         return Result.fail(2003,"登录过期");
     }
+    @PatchMapping("UpdateDinningImgByBuid")
+    public  Result<?> upImgbybuid(@RequestParam("img") String imgString,
+                                  @RequestParam("buid") String buid){
+                this.businessmenService.upImgbybuid(imgString,buid);
+                return Result.success("修改成功");
+    }
+    @GetMapping("getdiningimg")
+    public Result<?> getdiningimg(@RequestParam("buid") String buid){
+        Map<String,Object> data = businessmenService.getdiningimg(buid);
+        if (data!=null){
+            return Result.success(data);
+        }
+        return Result.fail("无数据");
+    }
 
 
 }

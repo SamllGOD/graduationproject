@@ -20,4 +20,8 @@ public interface IBusinessmenService extends IService<Businessmen> {
     void userlogout(String token);
 
     Map<String, Object> getbusinessInfo(String token);
+
+    void upImgbybuid(String imgString, String buid);
+
+    Map<String, Object> getdiningimg(String buid);
 }

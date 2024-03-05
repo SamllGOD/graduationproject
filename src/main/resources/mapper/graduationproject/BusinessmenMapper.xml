@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.graduationproject.mapper.BusinessmenMapper">
+    <update id="UpdateDiningImgByBusinessId">
+        UPDATE
+            businessmen
+        SET
+            bu_tablepto = #{diningimg}
+        where
+            businessmen_id = #{buid}
+    </update>
+    <resultMap id="selectDiningImgResultMap" type="Map">
+                    <result column="bu_tablepto" property="buTablepto"/>
+    </resultMap>
 
-
+    <select id="selectDiningImgBybuId" parameterType="String" resultMap="selectDiningImgResultMap">
+        SELECT
+            bu_tablepto
+        FROM
+            `businessmen`
+        where
+            businessmen_id = #{buid}
+    </select>
 
 
 </mapper>

@@ -20,7 +20,7 @@
         SELECT
             *
         FROM
-            dish_information
+            `dish_information`
         WHERE
             dish_infomation_id = #{dishid}
 
@@ -30,7 +30,79 @@
 
 
     <select id="getAllDishMessage" resultType="com.example.graduationproject.entity.DishInformation">
-        SELECT * FROM dish_information
+        SELECT * FROM `dish_information`
     </select>
+
+<!--    &#45;&#45; 主食接口-->
+<!--    SELECT * FROM dish_information where dish_category = 0-->
+<!--    &#45;&#45; 查看汤-->
+<!--    SELECT * FROM dish_information where dish_category = 1-->
+<!--    &#45;&#45; 查看蔬菜-->
+<!--    SELECT * FROM dish_information where dish_category = 2-->
+<!--    &#45;&#45; 查看肉菜-->
+<!--    SELECT * FROM dish_information where dish_category = 3-->
+<!--    &#45;&#45; 酸-->
+<!--    SELECT * FROM dish_information where dish_type = 0-->
+<!--    &#45;&#45; 甜-->
+<!--    SELECT * FROM dish_information where dish_type = 1-->
+<!--    &#45;&#45; 辣-->
+<!--    SELECT * FROM dish_information where dish_type = 3-->
+<!--    &#45;&#45; 咸-->
+<!--    SELECT * FROM dish_information where dish_type = 4-->
+
+<!-- 菜品种类   -->
+
+    <select id="SelectDishByDishCategory"
+            resultType="com.example.graduationproject.entity.DishInformation"
+            parameterType="String">
+        SELECT
+            *
+        FROM
+            `dish_information`
+        where
+            dish_category
+                = #{dcategory}
+
+    </select>
+
+    <!-- 菜品味道   -->
+
+    <select id="SelectDishByDishType"
+            resultType="com.example.graduationproject.entity.DishInformation"
+            parameterType="String">
+        SELECT
+            *
+        FROM
+            `dish_information`
+        where
+            dish_type
+                = #{dtype}
+
+    </select>
+
+    <select id="selectDishByDishAddressOrDishCareers"
+            parameterType="String"
+            resultType="com.example.graduationproject.entity.DishInformation">
+        SELECT
+            *
+        FROM
+            dish_information
+        WHERE
+            dish_address = #{useraddress}
+           OR
+            dish_careers LIKE  concat('%',#{usercareers},'%')
+        <!--concat字符串拼接-->
+    </select>
+
+
+
+
+
+
+
+
+
+
+
 
 </mapper>

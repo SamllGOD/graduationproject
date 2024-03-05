@@ -20,6 +20,12 @@ public interface DishInformationMapper extends BaseMapper<DishInformation> {
 
    List<DishInformation> getAllDishMessage();
 
+   // 菜品味道
+   List<DishInformation> SelectDishByDishType(String dtype);
 
+   //菜品种类
+   List<DishInformation> SelectDishByDishCategory(String dcategory);
+
+   List<DishInformation> selectDishByDishAddressOrDishCareers(String useraddress,String usercareers);
 
 }

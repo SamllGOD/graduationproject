@@ -4,6 +4,7 @@ import com.example.graduationproject.entity.Businessmen;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -15,5 +16,8 @@ import java.util.List;
  */
 public interface BusinessmenMapper extends BaseMapper<Businessmen> {
 
+    void  UpdateDiningImgByBusinessId(String diningimg,String buid);
+
+    List<Map<String,Object>> selectDiningImgBybuId(String buid);
 
 }

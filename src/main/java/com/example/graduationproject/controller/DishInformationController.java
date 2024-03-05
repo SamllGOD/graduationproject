@@ -4,9 +4,11 @@ import com.example.graduationproject.common.vo.Result;
 import com.example.graduationproject.entity.DishInformation;
 import com.example.graduationproject.service.IDishInformationService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -60,4 +62,35 @@ public class DishInformationController {
         }
         return Result.fail("未找到数据");
     }
+
+    @GetMapping("selectdishbydishtype")
+    public  Result<?> getdishbydishtype(@RequestParam("dishtype") String dishtype){
+        Map<String, Object> data =  iDishInformationService.getdishbydishtype(dishtype);
+     if (data != null){
+         return Result.success(data);
+     }
+     return Result.fail("未找到该口味的食品");
+    }
+
+    @GetMapping("selectdishbydishcategory")
+    public  Result<?> getDishbydishcategory(@RequestParam("category") String category){
+        Map<String, Object> data =  iDishInformationService.getDishbydishcategory(category);
+        if (data != null){
+            return Result.success(data);
+        }
+        return Result.fail("未找到该种类的食品");
+    }
+
+    @GetMapping("getdishbydishaddressordishcareers")
+    public  Result<?> getdishbydishaddressordishcareers(@RequestParam("address") String address,
+                                                        @RequestParam("careers") String careers
+                                                       ){
+              Map<String,Object> data = iDishInformationService.getdishbydishaddressordishcareers(address,careers);
+        if (data != null){
+            return Result.success(data);
+        }
+        return Result.fail("未找到该推荐食品");
+    }
+
+
 }

@@ -40,6 +40,7 @@ public class DiningTableServiceImpl extends ServiceImpl<DiningTableMapper, Dinin
             //将key返回回去 以后要查询数据使用key在redis中查找
             HashMap<String, Object> data = new HashMap<>();
             data.put("tredis",key);
+            data.put("buid",busingssid);
 
             return data;
         }
@@ -73,4 +74,12 @@ public class DiningTableServiceImpl extends ServiceImpl<DiningTableMapper, Dinin
 
         return data;
     }
+
+    @Override
+    public void upeTableByDiningTableId(DiningTable diningTable) {
+         this.baseMapper.updateTableByTableId(diningTable);
+        return ;
+    }
+
+
 }

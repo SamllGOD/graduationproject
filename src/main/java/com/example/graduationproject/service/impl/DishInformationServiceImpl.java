@@ -67,5 +67,34 @@ public class DishInformationServiceImpl extends ServiceImpl<DishInformationMappe
 
     }
 
+    @Override
+    public Map<String, Object> getdishbydishtype(String dishtype) {
+        List<DishInformation> dishInformationbydishtype = this.baseMapper.SelectDishByDishType(dishtype);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("dish",dishInformationbydishtype);
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> getDishbydishcategory(String category) {
+
+        List<DishInformation> dishInformationbycategory = this.baseMapper.SelectDishByDishCategory(category);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("dish",dishInformationbycategory);
+        return map;
+
+
+
+    }
+
+    @Override
+    public Map<String, Object> getdishbydishaddressordishcareers(String address, String careers) {
+        List<DishInformation> dishInformations =
+                this.baseMapper.selectDishByDishAddressOrDishCareers(address, careers);
+        HashMap<String, Object> map = new HashMap<>();
+            map.put("dish",dishInformations);
+        return map;
+    }
+
 
 }
