@@ -38,13 +38,15 @@ public class Order implements Serializable {
 
     private  Integer orderUid;
 
-    private Integer diningoptions;
+    private String diningoptions;
 
     private Integer ordering;
 
     private Integer ordertype;
 
     private Integer orderDe;
+
+    private  Integer orderDinid;
 
 
     public Integer getOrderCenterId() {
@@ -128,11 +130,11 @@ public class Order implements Serializable {
         this.orderUid = orderUid;
     }
 
-    public Integer getDiningoptions() {
+    public String getDiningoptions() {
         return diningoptions;
     }
 
-    public void setDiningoptions(Integer diningoptions) {
+    public void setDiningoptions(String diningoptions) {
         this.diningoptions = diningoptions;
     }
 
@@ -160,6 +162,14 @@ public class Order implements Serializable {
         this.orderDe = orderDe;
     }
 
+    public Integer getOrderDinid() {
+        return orderDinid;
+    }
+
+    public void setOrderDinid(Integer orderDinid) {
+        this.orderDinid = orderDinid;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -173,10 +183,11 @@ public class Order implements Serializable {
                 ", recommend='" + recommend + '\'' +
                 ", orderBuid=" + orderBuid +
                 ", orderUid=" + orderUid +
-                ", diningoptions=" + diningoptions +
+                ", diningoptions='" + diningoptions + '\'' +
                 ", ordering=" + ordering +
                 ", ordertype=" + ordertype +
                 ", orderDe=" + orderDe +
+                ", orderDinid=" + orderDinid +
                 '}';
     }
 }

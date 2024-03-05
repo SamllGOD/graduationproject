@@ -2,4 +2,86 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.graduationproject.mapper.CartinfoMapper">
 
+    <resultMap id="dishInformationResultMap" type="java.util.HashMap">
+        <result column="dish_name" property="dishName" />
+        <result column="picture" property="picture" />
+    </resultMap>
+
+    <resultMap id="getUserCartResultMap" type="java.util.HashMap">
+        <id column="cartinfoid" property="cartinfoid"/>
+        <result column="cartdishnumber" property="cartdishnumber"/>
+        <result column="carttotalprice" property="carttotalprice"/>
+        <association property="dishInformation"
+                     resultMap="dishInformationResultMap"
+                     javaType="com.example.graduationproject.entity.DishInformation">
+            <result column="dish_name" property="dishName" />
+            <result column="picture" property="picture" />
+        </association>
+    </resultMap>
+
+    <select id="getUserCart"
+            resultMap="getUserCartResultMap"
+            parameterType="String">
+        SELECT
+            cartinfoid,
+            dish_name,
+            picture,
+            cartdishnumber,
+            carttotalprice
+        FROM
+            cart
+                INNER JOIN `user` on cart.cart_uid = `user`.u_id
+                INNER JOIN cartinfo ON cart.car_id = cartinfo.cartid
+                INNER JOIN dish_information on cartinfo.dishinfoid = dish_information.dish_infomation_id
+        WHERE cart.cart_uid = #{userid}
+    </select>
+
+
+
+
+<!--    根据cartinfoid获取食物信息-->
+    <resultMap id="getdishInformationByCartInfoIdResultMap" type="java.util.HashMap">
+        <result column="dish_name" property="dishName" />
+        <result column="dish_histories" property="dishHistories" />
+        <result column="praise_len" property="praiseLen" />
+        <result column="price" property="price" />
+        <result column="intredients" property="intredients" />
+        <result column="picture" property="picture" />
+    </resultMap>
+    <resultMap id="getCartDishInfoByCartInfoIdResultMap" type="java.util.HashMap">
+        <result column="cartdishnumber" property="cartdishnumber"/>
+        <result column="carttotalprice" property="carttotalprice"/>
+        <association property="dishInformation"
+                     resultMap="getdishInformationByCartInfoIdResultMap"
+                     javaType="com.example.graduationproject.entity.DishInformation">
+
+                <result column="dish_name" property="dishName" />
+                <result column="dish_histories" property="dishHistories" />
+                <result column="praise_len" property="praiseLen" />
+                <result column="price" property="price" />
+                <result column="intredients" property="intredients" />
+                <result column="picture" property="picture" />
+        </association>
+    </resultMap>
+
+    <select id="getCartDishInfoByCartInfoId"
+            resultMap="getCartDishInfoByCartInfoIdResultMap"
+            parameterType="String">
+        SELECT
+            cartdishnumber,
+            carttotalprice,
+            dish_name,
+            dish_histories,
+            praise_len,
+            price,
+            picture,
+            intredients
+        FROM
+            cartinfo INNER JOIN dish_information
+                ON cartinfo.dishinfoid = dish_information.dish_infomation_id
+        where cartinfoid = #{cartinfoid}
+    </select>
+
+
+
 </mapper>

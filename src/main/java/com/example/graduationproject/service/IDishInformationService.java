@@ -24,4 +24,5 @@ public interface IDishInformationService extends IService<DishInformation> {
     Map<String, Object> getdishmessagefordishid(String dishid);
 
 
+    Map<String, Object> getalldishmessage();
 }

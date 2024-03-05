@@ -13,4 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IOrderService extends IService<Order> {
 
+    Order selectByOrderNo(String orderNo);
+
+    Integer addorder(Order order);
 }

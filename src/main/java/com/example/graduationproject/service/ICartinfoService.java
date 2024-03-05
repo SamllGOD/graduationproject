@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.graduationproject.entity.Cart;
 import com.example.graduationproject.entity.Cartinfo;
 
+import java.util.Map;
+
 /**
  * <p>
  *  服务类
@@ -14,4 +16,7 @@ import com.example.graduationproject.entity.Cartinfo;
  */
 public interface ICartinfoService extends IService<Cartinfo> {
 
+    Map<String, Object> getUserCart(String userid);
+
+    Map<String, Object> getCartDish(String cartinfoid);
 }

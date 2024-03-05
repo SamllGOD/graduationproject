@@ -9,6 +9,10 @@ import com.example.graduationproject.service.IOrderinfoService;
 import com.example.graduationproject.service.ITableInfoService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  *  服务实现类
@@ -20,4 +24,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class TableInfoServiceImpl extends ServiceImpl<TablerInfoMapper, TableInfo> implements ITableInfoService {
 
+    @Override
+    public Map<String, Object> getTableIdByDiningId(String dinid) {
+        List<Map<String, Object>> tableIdByDiningId = this.baseMapper.getTableIdByDiningId(dinid);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("usetable",tableIdByDiningId);
+        return map;
+    }
 }

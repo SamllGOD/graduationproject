@@ -57,5 +57,15 @@ public class DiningTableController {
         return Result.fail("未找到数据");
     }
 
+    //根据商家id获取指定字段
+    @GetMapping("getBusinessDining")
+    public Result<?> getBusinessDining(@RequestParam("businessid") String buid){
+        Map<String, Object> data = diningTableService.getBusinessDining(buid);
+        if (data != null){
+            return Result.success(data);
+        }
+        return Result.fail("未找到数据");
+    }
+
 
 }

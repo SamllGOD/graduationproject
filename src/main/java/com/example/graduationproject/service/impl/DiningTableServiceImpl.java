@@ -63,4 +63,14 @@ public class DiningTableServiceImpl extends ServiceImpl<DiningTableMapper, Dinin
         data.put("tabledata",tablemessage);
         return data;
     }
+
+    @Override
+    public Map<String, Object> getBusinessDining(String buid) {
+        List<Map<String, Object>> maps = this.baseMapper.getBusinessDining(buid);
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("BusinessDiningType",maps);
+
+
+        return data;
+    }
 }

@@ -34,6 +34,12 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>3.0.3</version>
 		</dependency>
+<!--		引入支付宝sdk-->
+		<dependency>
+			<groupId>com.alipay.sdk</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>4.35.79.ALL</version>
+		</dependency>
 
 
 		<!--		序列化使用-->
@@ -116,6 +122,23 @@
 			<version>3.0.3</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!--排除commons-logging-->
+		<!--排除commons-logging-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+
+
 	</dependencies>
 
 	<build>

@@ -9,6 +9,10 @@ import com.example.graduationproject.service.ICartService;
 import com.example.graduationproject.service.ICartinfoService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  *  服务实现类
@@ -20,4 +24,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class CartinfoServiceImpl extends ServiceImpl<CartinfoMapper, Cartinfo> implements ICartinfoService {
 
+    @Override
+    public Map<String, Object> getUserCart(String userid) {
+        List<Map<String, Object>> userCartMessage = this.baseMapper.getUserCart(userid);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("cartmessage",userCartMessage);
+        return map;
+    }
+
+    @Override
+    public  Map<String, Object> getCartDish(String cartinfoid) {
+        List<Map<String, Object>> cartDishInfoByCartInfoId = this.baseMapper.getCartDishInfoByCartInfoId(cartinfoid);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("cartdishbyid",cartDishInfoByCartInfoId);
+        return map;
+    }
 }

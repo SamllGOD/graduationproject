@@ -18,5 +18,8 @@ public interface DishInformationMapper extends BaseMapper<DishInformation> {
 
    DishInformation getDishmessageByDishId(String dishid);
 
-   List<DishInformation> getDishByDishId(String orderbuid);
+   List<DishInformation> getAllDishMessage();
+
+
+
 }

@@ -12,6 +12,16 @@
         WHERE dining_buid = #{buid}
     </select>
 
+    <!--    &#45;&#45; 根据商家id获取商家餐桌类型信息-->
+    <resultMap id="getBusinessDiningResultMap" type="java.util.HashMap">
+            <id column="dining_table_id" property="diningTableId"/>
+        <result column="table_type" property="tableType"/>
+    </resultMap>
+    <select id="getBusinessDining" resultMap="getBusinessDiningResultMap" parameterType="String">
+        SELECT dining_table_id,table_type FROM dining_table where dining_buid = #{buid}
+    </select>
+
+
 
 
 </mapper>

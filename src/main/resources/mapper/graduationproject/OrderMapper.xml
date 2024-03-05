@@ -12,6 +12,34 @@
     WHERE order_buid = #{buid}
 </select>
 
+    <insert id="insertOrder"
+            parameterType="com.example.graduationproject.entity.Order"
+            useGeneratedKeys="true"
+            keyProperty="orderCenterId">
+        INSERT INTO
+            `order`
+            (purchase_quantity,total_price,order_uid,order_buid,diningoptions,order_dinid)
+        VALUES ( #{purchaseQuantity},#{totalPrice},#{orderUid},#{orderBuid},#{diningoptions},#{orderDinid})
+    </insert>
+
+<!--    <insert id="batchInsertOrderInfo"-->
+<!--            parameterType="java.util.List">-->
+<!--        insert into `orderinfo` (order_id,dish_infoid,order_meals) VALUES-->
+<!--                    <foreach collection=""  item="" separator=",">-->
+<!--                        ( )-->
+<!--                    </foreach>-->
+
+
+
+
+
+<!--    </insert>-->
+
+
+    <select id="selectByOrderId" resultType="com.example.graduationproject.entity.Order" parameterType="String">
+        SELECT * FROM `order` WHERE order_center_id = #{orderid}
+    </select>
+
 
 
 </mapper>

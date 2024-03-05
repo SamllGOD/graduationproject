@@ -17,4 +17,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements IOrderService {
 
+
+    @Override
+    public Order selectByOrderNo(String orderNo) {
+        Order order = this.baseMapper.selectByOrderId(orderNo);
+        System.out.println(order);
+        return order;
+    }
+
+    @Override
+    public Integer addorder(Order order) {
+        this.baseMapper.insertOrder(order);
+        Integer id = order.getOrderCenterId();
+        return id;
+    }
 }

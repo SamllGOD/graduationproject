@@ -2,4 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.graduationproject.mapper.TablerInfoMapper">
 
+<!--    &#45;&#45; 根据dining_table_id以及餐桌状态获取餐桌信息 注意订单表中需要table_id-->
+    <resultMap id="getTableIdByDiningIdResultMap" type="java.util.Map">
+        <id column="table_id" property="tableId"/>
+        <result column="table_number" property="tableNumber"/>
+    </resultMap>
+<select id="getTableIdByDiningId" resultMap="getTableIdByDiningIdResultMap" parameterType="String">
+    SELECT table_id,table_number FROM table_info WHERE table_diningid = #{diningid} AND table_use = 0
+</select>
+
+
 </mapper>

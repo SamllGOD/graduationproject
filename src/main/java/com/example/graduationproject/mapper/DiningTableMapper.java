@@ -4,6 +4,7 @@ import com.example.graduationproject.entity.DiningTable;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -15,6 +16,9 @@ import java.util.List;
  */
 public interface DiningTableMapper extends BaseMapper<DiningTable> {
     public List<DiningTable> getAllByBusinessId(String buid);
+
+//      <!--    &#45;&#45; 根据商家id获取商家餐桌类型信息-->
+    public List<Map<String,Object>> getBusinessDining(String buid);
 
 
 }

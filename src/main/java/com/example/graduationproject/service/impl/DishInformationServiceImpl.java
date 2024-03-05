@@ -57,5 +57,15 @@ public class DishInformationServiceImpl extends ServiceImpl<DishInformationMappe
         return null;
     }
 
+    @Override
+    public Map<String, Object> getalldishmessage() {
+        List<DishInformation> allDishMessage = this.baseMapper.getAllDishMessage();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("dish",allDishMessage);
+        return map;
+
+
+    }
+
 
 }

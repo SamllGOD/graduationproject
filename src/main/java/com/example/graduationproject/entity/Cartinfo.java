@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -40,6 +41,10 @@ public class Cartinfo {
     private LocalDateTime updateTime;
 
     private Integer cartpay;
+
+    private Integer cartdishnumber;
+
+    private BigDecimal carttotalprice;
 
     public Integer getCartinfoid() {
         return cartinfoid;
@@ -89,6 +94,21 @@ public class Cartinfo {
         this.cartpay = cartpay;
     }
 
+    public Integer getCartdishnumber() {
+        return cartdishnumber;
+    }
+
+    public void setCartdishnumber(Integer cartdishnumber) {
+        this.cartdishnumber = cartdishnumber;
+    }
+
+    public BigDecimal getCarttotalprice() {
+        return carttotalprice;
+    }
+
+    public void setCarttotalprice(BigDecimal carttotalprice) {
+        this.carttotalprice = carttotalprice;
+    }
 
     @Override
     public String toString() {
@@ -99,6 +119,8 @@ public class Cartinfo {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", cartpay=" + cartpay +
+                ", cartdishnumber=" + cartdishnumber +
+                ", carttotalprice=" + carttotalprice +
                 '}';
     }
 }

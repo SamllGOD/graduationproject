@@ -88,6 +88,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             data.put("uAvatar",loginuser.getuAvatar());
             data.put("uName",loginuser.getuName());
             data.put("userdata",loginuser);
+            data.put("userid",loginuser.getuId());
             return data;
         }
 

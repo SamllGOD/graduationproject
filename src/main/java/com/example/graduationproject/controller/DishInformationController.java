@@ -51,4 +51,13 @@ public class DishInformationController {
         iDishInformationService.save(dishInformation);
         return Result.success("添加成功");
     }
+
+    @GetMapping("getalldishmessage")
+    public Result<?> getalldishmessage(){
+        Map<String, Object> data = iDishInformationService.getalldishmessage();
+        if (data != null){
+            return Result.success(data);
+        }
+        return Result.fail("未找到数据");
+    }
 }

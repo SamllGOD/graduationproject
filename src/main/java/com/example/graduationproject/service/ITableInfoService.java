@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 import com.example.graduationproject.entity.TableInfo;
 
+import java.util.Map;
+
 /**
  * <p>
  *  服务类
@@ -14,4 +16,5 @@ import com.example.graduationproject.entity.TableInfo;
  */
 public interface ITableInfoService extends IService<TableInfo> {
 
+    Map<String, Object> getTableIdByDiningId(String dinid);
 }
