@@ -8,7 +8,7 @@
         <result column="table_number" property="tableNumber"/>
     </resultMap>
 <select id="getTableIdByDiningId" resultMap="getTableIdByDiningIdResultMap" parameterType="String">
-    SELECT table_id,table_number FROM table_info WHERE table_diningid = #{diningid} AND table_use = 0
+    SELECT table_id,table_number FROM `table_info` WHERE table_diningid = #{diningid} AND table_use = 0
 </select>
 
 

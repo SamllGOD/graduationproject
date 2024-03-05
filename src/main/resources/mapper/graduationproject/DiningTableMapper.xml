@@ -8,7 +8,7 @@
         SELECT
             *
         FROM
-            dining_table
+            `dining_table`
         WHERE dining_buid = #{buid}
     </select>
 
@@ -18,7 +18,7 @@
         <result column="table_type" property="tableType"/>
     </resultMap>
     <select id="getBusinessDining" resultMap="getBusinessDiningResultMap" parameterType="String">
-        SELECT dining_table_id,table_type FROM dining_table where dining_buid = #{buid}
+        SELECT dining_table_id,table_type FROM `dining_table` where dining_buid = #{buid}
     </select>
 
 

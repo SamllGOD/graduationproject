@@ -24,6 +24,12 @@ public class Order implements Serializable {
 
     private String payType;
 
+//    订单号
+    private Integer order_number;
+
+    //支付名称
+    private String rder_name;
+
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime createTime;
@@ -170,6 +176,22 @@ public class Order implements Serializable {
         this.orderDinid = orderDinid;
     }
 
+    public Integer getOrder_number() {
+        return order_number;
+    }
+
+    public void setOrder_number(Integer order_number) {
+        this.order_number = order_number;
+    }
+
+    public String getRder_name() {
+        return rder_name;
+    }
+
+    public void setRder_name(String rder_name) {
+        this.rder_name = rder_name;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -178,6 +200,8 @@ public class Order implements Serializable {
                 ", totalPrice=" + totalPrice +
                 ", payStay='" + payStay + '\'' +
                 ", payType='" + payType + '\'' +
+                ", order_number=" + order_number +
+                ", rder_name='" + rder_name + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", recommend='" + recommend + '\'' +

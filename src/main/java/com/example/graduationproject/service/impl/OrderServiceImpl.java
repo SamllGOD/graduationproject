@@ -21,7 +21,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Override
     public Order selectByOrderNo(String orderNo) {
         Order order = this.baseMapper.selectByOrderId(orderNo);
-        System.out.println(order);
         return order;
     }
 

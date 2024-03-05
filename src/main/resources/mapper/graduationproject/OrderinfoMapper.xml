@@ -50,12 +50,12 @@
             dish_no,
            dining_name
         from
-            dish_information
-                INNER JOIN orderinfo
+            `dish_information`
+                INNER JOIN `orderinfo`
                     ON orderinfo.dish_infoid = dish_information.dish_infomation_id
                 INNER JOIN `order` on orderinfo.order_id = `order`.order_center_id
-                INNER JOIN table_info ON `order`.order_dinid = table_info.table_id
-                 INNER JOIN dining_table on table_info.table_diningid = dining_table.dining_table_id
+                INNER JOIN `table_info` ON `order`.order_dinid = table_info.table_id
+                 INNER JOIN `dining_table` on table_info.table_diningid = dining_table.dining_table_id
         WHERE dish_infomation_id
                   in
               (

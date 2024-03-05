@@ -93,7 +93,7 @@ public class User implements Serializable {
     /**
      * 是否是商家 是： 1 不是 0
      */
-    private Integer whetherBusinessmen;
+
 
     /**
      * 用户更新时间
@@ -202,13 +202,6 @@ public class User implements Serializable {
         this.uRecommend = uRecommend;
     }
 
-    public Integer getWhetherBusinessmen() {
-        return whetherBusinessmen;
-    }
-
-    public void setWhetherBusinessmen(Integer whetherBusinessmen) {
-        this.whetherBusinessmen = whetherBusinessmen;
-    }
 
     public LocalDateTime getuUpdateTime() {
         return uUpdateTime;
@@ -256,7 +249,6 @@ public class User implements Serializable {
                 ", uDelete=" + uDelete +
                 ", uCreatetime=" + uCreatetime +
                 ", uRecommend='" + uRecommend + '\'' +
-                ", whetherBusinessmen=" + whetherBusinessmen +
                 ", uUpdateTime=" + uUpdateTime +
                 ", uBalance=" + uBalance +
                 ", uProvince='" + uProvince + '\'' +

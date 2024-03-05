@@ -20,7 +20,7 @@
         SELECT
             *
         FROM
-            dish_information
+            `dish_information`
         WHERE
             dish_infomation_id = #{dishid}
 
@@ -30,7 +30,7 @@
 
 
     <select id="getAllDishMessage" resultType="com.example.graduationproject.entity.DishInformation">
-        SELECT * FROM dish_information
+        SELECT * FROM `dish_information`
     </select>
 
 </mapper>
