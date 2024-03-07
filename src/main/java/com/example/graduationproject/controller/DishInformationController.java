@@ -92,5 +92,49 @@ public class DishInformationController {
         return Result.fail("未找到该推荐食品");
     }
 
+    @GetMapping("selectdishbypricebetween")
+    public Result<?> getdishbypricebetween(@RequestParam("price1") String lowPrice,
+                                           @RequestParam("price2") String highPrice){
+       Map<String,Object>   data =  iDishInformationService.getdishbypricebetween(lowPrice,highPrice);
+        if (data != null){
+            return Result.success(data);
+        }
+        return Result.fail("未找到该价格区间的食品");
+    }
+    @GetMapping("selectDishByDishName")
+    public Result<?> getDishByDishName(@RequestParam("dishname") String dishname){
+        Map<String,Object>   data=  iDishInformationService.getDishByDishName(dishname);
+        if (data != null){
+            return Result.success(data);
+        }
+        return Result.fail("未找到该名称的食品");
+    }
+
+
+    @DeleteMapping("DeleteDishByDishIdAndDishBuId")
+    public Result<?> DeleteDishByDishIdAndDishBuId(@RequestParam("dishid") String dishid,
+                                                   @RequestParam("buid") String buid){
+        iDishInformationService.DeleteDishByDishIdAndDishBuId(dishid,buid);
+        return Result.success("更改成功");
+    }
+    @PostMapping("AddDishFromBuId")
+    public Result<?> AddDishFromBuId(@RequestBody DishInformation dishInformation){
+        iDishInformationService.AddDishFromBuId(dishInformation);
+        return Result.success("增加成功");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -73,6 +73,16 @@ public class DiningTableController {
         diningTableService.upeTableByDiningTableId(diningTable);
         return Result.success("修改成功");
     }
+    @PostMapping("InsertDiningTableByDiningBuId")
+    public Result<?> InsertDiningTableByDiningBuId(@RequestBody DiningTable diningTable){
+        diningTableService.save(diningTable);
+        return Result.success("增加成功");
+    }
 
+    @DeleteMapping("DeleteDiningTableBYDiningTableId")
+    public Result<?> DeleteDiningTableBYDiningTableId(@RequestParam("diningtableid") String diningtableid){
+        diningTableService.removeById(diningtableid);
+        return Result.success("删除成功");
+    }
 
 }

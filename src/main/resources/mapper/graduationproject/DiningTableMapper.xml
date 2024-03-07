@@ -34,7 +34,17 @@
                                 dining_table_id = #{diningTableId}
     </update>
 
-
+<insert id="InsertDiningTableByDiningBuId">
+    insert INTO
+        dining_table
+        (table_type,seating_capacity,
+         details,dining_photo,dining_name,
+         dining_buid,dintable_number)
+    VALUES
+        (#{tableType},#{seatingCapacity},
+         #{details},#{diningPhoto},#{diningName},
+         #{diningBuid},#{dintableNumber})
+</insert>
 
 
 </mapper>

@@ -17,4 +17,5 @@ import java.util.Map;
  */
 public interface TablerInfoMapper extends BaseMapper<TableInfo> {
       public   List<Map<String ,Object>> getTableIdByDiningId(String diningid);
+      void  InsertTableByDiningID(TableInfo tableInfo);
 }

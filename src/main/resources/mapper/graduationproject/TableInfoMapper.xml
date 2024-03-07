@@ -11,5 +11,13 @@
     SELECT table_id,table_number FROM `table_info` WHERE table_diningid = #{diningid} AND table_use = 0
 </select>
 
+    <insert id="InsertTableByDiningID">
+        INSERT INTO
+            table_info
+            (table_number,table_diningid)
+        VALUES
+            (#{tablenumber},#{tableDiningid})
+    </insert>
+
 
 </mapper>

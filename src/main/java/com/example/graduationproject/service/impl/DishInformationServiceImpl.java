@@ -96,5 +96,31 @@ public class DishInformationServiceImpl extends ServiceImpl<DishInformationMappe
         return map;
     }
 
+    @Override
+    public Map<String, Object> getdishbypricebetween(String lowPrice, String highPrice) {
+        List<DishInformation> dishInformation = this.baseMapper.selectDishByPriceBetween(lowPrice, highPrice);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("dish",dishInformation);
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> getDishByDishName(String dishname) {
+        List<DishInformation> dishInformation = this.baseMapper.selectDishByDishName(dishname);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("dish",dishInformation);
+        return map;
+    }
+
+    @Override
+    public void DeleteDishByDishIdAndDishBuId(String dishid, String buid) {
+                    this.baseMapper.DeleteDishByDishIdAndDishBuId(dishid,buid);
+    }
+
+    @Override
+    public void AddDishFromBuId(DishInformation dishInformation) {
+        this.baseMapper.AddDishFromBuId(dishInformation);
+    }
+
 
 }

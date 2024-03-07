@@ -22,5 +22,7 @@ public interface DiningTableMapper extends BaseMapper<DiningTable> {
 
           void updateTableByTableId(DiningTable diningTable);
 
+          void InsertDiningTableByDiningBuId(DiningTable diningTable);
+
 
 }

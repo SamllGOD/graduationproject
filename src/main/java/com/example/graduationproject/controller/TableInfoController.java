@@ -1,13 +1,11 @@
 package com.example.graduationproject.controller;
 
 import com.example.graduationproject.common.vo.Result;
+import com.example.graduationproject.entity.TableInfo;
 import com.example.graduationproject.service.ITableInfoService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -33,6 +31,11 @@ public class TableInfoController {
          return Result.fail("未找到数据");
     }
 
+    @PostMapping("InsertTableByDiningID")
+    public Result<?> InsertTableByDiningID(@RequestBody TableInfo tableInfo){
+        iTableInfoService.save(tableInfo);
+        return Result.success("增加成功");
+    }
 
 
 }

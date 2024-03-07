@@ -97,11 +97,57 @@
 
 
 
+    <select id="selectDishByPriceBetween"
+            resultType="com.example.graduationproject.entity.DishInformation"
+            parameterType="String">
+        SELECT
+            *
+        FROM
+            `dish_information`
+        where
+            price
+                BETWEEN
+                #{lowPrice} and #{highPrice}
+    </select>
+<select id="selectDishByDishName"
+        resultType="com.example.graduationproject.entity.DishInformation"
+        parameterType="String">
+    SELECT
+        *
+    FROM
+        `dish_information`
+    where
+        dish_name
+            LIKE concat('%', #{dishName},'%')
+</select>
 
 
+    <delete id="DeleteDishByDishIdAndDishBuId" parameterType="String">
+        DELETE  FROM
+                    dish_information
+                WHERE
+                    dish_infomation_id = #{dishid}
+                  and
+                    dish_buid = #{buid}
+    </delete>
 
 
-
+<insert id="AddDishFromBuId">
+    INSERT
+    INTO
+        dish_information
+        (dish_name,picture,dish_category,price,intredients,practice,
+         Preferred_Quality,dish_histories,Ingredients_one,carbohydrate,
+         carbohydrates,fat,fibre,Ingredients_two,Ingredients_three,
+         Ingredients_four,Ingredients_five,dish_address,
+         dish_careers,dish_buid,dish_type)
+    VALUES
+        (#{dishName},#{picture},#{dishCategory},#{price},#{intredients},
+         #{practice},#{preferredQuality},#{dishHistories},#{ingredientsOne},
+         #{carbohydrate},#{carbohydrates},#{fat},#{fibre},#{ingredientsTwo},
+         #{ingredientsThree},#{ingredientsFour},#{ingredientsFive},#{dishAddress},
+         #{dishCareers},#{dishBuid},#{dishType})
+</insert>
 
 
 

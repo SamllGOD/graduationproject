@@ -179,7 +179,7 @@ public class DishInformation implements Serializable {
 
    private String dishType;
 
-   private Integer dish_category;
+   private Integer dishCategory;
 
 
 
@@ -469,12 +469,12 @@ public class DishInformation implements Serializable {
     }
 
 
-    public Integer getDish_category() {
-        return dish_category;
+    public Integer getDishCategory() {
+        return dishCategory;
     }
 
-    public void setDish_category(Integer dish_category) {
-        this.dish_category = dish_category;
+    public void setDishCategory(Integer dishCategory) {
+        this.dishCategory = dishCategory;
     }
 
     @Override
@@ -515,7 +515,7 @@ public class DishInformation implements Serializable {
                 ", praiseLenQt='" + praiseLenQt + '\'' +
                 ", dishBuid=" + dishBuid +
                 ", dishType='" + dishType + '\'' +
-                ", dish_category=" + dish_category +
+                ", dish_category=" + dishCategory +
                 '}';
     }
 }

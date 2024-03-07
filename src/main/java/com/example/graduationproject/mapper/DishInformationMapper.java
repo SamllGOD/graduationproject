@@ -28,4 +28,11 @@ public interface DishInformationMapper extends BaseMapper<DishInformation> {
 
    List<DishInformation> selectDishByDishAddressOrDishCareers(String useraddress,String usercareers);
 
+   List<DishInformation> selectDishByPriceBetween(String lowPrice,String highPrice);
+
+   List<DishInformation> selectDishByDishName(String dishName);
+
+   void DeleteDishByDishIdAndDishBuId(String dishid,String buid);
+
+   void AddDishFromBuId(DishInformation dishInformation);
 }
