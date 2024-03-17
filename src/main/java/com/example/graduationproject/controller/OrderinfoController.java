@@ -56,5 +56,11 @@ public class OrderinfoController {
         }
         return Result.fail("未找到数据");
     }
+    @PatchMapping("uporderdishmeals")
+    public Result<?> uporderdishmeals(@RequestParam("dishid") String dishid){
+        iOrderinfoService.uporderdishmeals(dishid);
+        return Result.success("出餐成功");
+    }
+
 
 }

@@ -1,8 +1,11 @@
 package com.example.graduationproject.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+
+import com.example.graduationproject.service.ICommentsService;
+import jakarta.annotation.Resource;
+
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -15,5 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/comments")
 public class CommentsController {
+//    @Resource
+//    private ICommentsService iCommentsService;
+
+
+//    @PostMapping("insertCommentsByUserIDAndOrderId")
+//    public Result<?> insertCommentsByUserIDAndOrderId(@RequestBody Comments comments){
+//        iCommentsService.save(comments);
+//         return  Result.success("评价成功");
+//    }
 
 }

@@ -3,6 +3,7 @@ package com.example.graduationproject.service;
 import com.example.graduationproject.entity.DishInformation;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -38,4 +39,19 @@ public interface IDishInformationService extends IService<DishInformation> {
     void DeleteDishByDishIdAndDishBuId(String dishid, String buid);
 
     void AddDishFromBuId(DishInformation dishInformation);
+
+    Map<String, Object> getDishByCreateTime();
+
+    Map<String, Object> getDishByMySelf();
+
+
+    Map<String, Object> getDishByPriceCommend(Double price,
+                                              Integer rulesDish,
+                                              Integer dishcategoryRouNumber,
+                                              Integer dishcategoryshuNumber,
+                                              Integer dishcategorytangNumber,
+                                              Integer dishcategoryzhuNumber);
+
+
+    Map<String, Object> getMyselfPointDish(Double price, Integer bigdishnumber, Integer dishcategoryRouNumber, Integer dishcategoryshuNumber, Integer dishcategorytangNumber, Integer dishcategoryzhuNumber);
 }

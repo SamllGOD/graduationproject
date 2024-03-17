@@ -30,6 +30,10 @@ public class Orderinfo {
 
     private String orderMeals;
 
+    private Integer orderDishNumber;
+
+    private Integer orderdishcomment;
+
 
 
     public Integer getCreateorderId() {
@@ -81,6 +85,23 @@ public class Orderinfo {
         this.orderMeals = orderMeals;
     }
 
+    public Integer getOrderDishNumber() {
+        return orderDishNumber;
+    }
+
+    public void setOrderDishNumber(Integer orderDishNumber) {
+        this.orderDishNumber = orderDishNumber;
+    }
+
+
+    public Integer getOrderdishcomment() {
+        return orderdishcomment;
+    }
+
+    public void setOrderdishcomment(Integer orderdishcomment) {
+        this.orderdishcomment = orderdishcomment;
+    }
+
     @Override
     public String toString() {
         return "Orderinfo{" +
@@ -90,6 +111,8 @@ public class Orderinfo {
                 ", createtime=" + createtime +
                 ", updatetime=" + updatetime +
                 ", orderMeals='" + orderMeals + '\'' +
+                ", orderDishNumber=" + orderDishNumber +
+                ", orderdishcomment=" + orderdishcomment +
                 '}';
     }
 }

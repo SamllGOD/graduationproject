@@ -41,5 +41,154 @@
     </select>
 
 
+    <select id="selectOrderByUserId" resultType="com.example.graduationproject.entity.Order">
+        SELECT *
+        FROM `order`
+        WHERE
+            order_uid = #{userid} and order_de = 0;
+    </select>
+
+    <update id="deleteorderbyordercenterid">
+        update `order` set order_de = 1 WHERE order_center_id = #{orderid}
+    </update>
+
+
+    <select id="getorderinfo" parameterType="String" resultType="com.example.graduationproject.entity.Orderinfo">
+        SELECT dish_infoid,order_meals,order_dish_number,orderdishcomment FROM orderinfo WHERE order_id = #{orderid}
+    </select>
+
+
+    <resultMap id="orderinforesultmap" type="java.util.HashMap">
+        <result column="order_meals" property="orderMeals"/>
+        <result column="order_dish_number" property="orderDishNumber"/>
+        <result column="orderdishcomment" property="orderdishcomment"/>
+    </resultMap>
+    <resultMap id="getorderdishresultmap" type="java.util.HashMap">
+                    <id column="dish_infomation_id" property="dishInfomationId"/>
+                    <result column="picture" property="picture"/>
+                    <result column="price" property="price"/>
+                    <result column="dish_name" property="dishName"/>
+                    <association property="orderinfo"
+                                 javaType="com.example.graduationproject.entity.Orderinfo"
+                                 resultMap="orderinforesultmap">
+                            <result column="order_meals" property="orderMeals"/>
+                            <result column="order_dish_number" property="orderDishNumber"/>
+                            <result column="orderdishcomment" property="orderdishcomment"></result>
+                    </association>
+    </resultMap>
+    <select id="getorderdish"  parameterType="java.util.List" resultMap="getorderdishresultmap">
+        SELECT dish_infomation_id,
+               picture,
+               price,
+               dish_name,
+               order_meals,
+               order_dish_number,
+                 orderdishcomment
+                FROM
+                     `dish_information`
+                         inner join `orderinfo`
+                             on `dish_information`.dish_infomation_id = `orderinfo`.dish_infoid
+                 WHERE
+                     dish_infomation_id
+                         IN (
+                             <foreach collection="dishidlist" item="idlist" separator=",">
+                                #{idlist}
+                             </foreach>
+                            ) and order_id = #{orderid}
+    </select>
+
+
+    <select id="selectCommentByOrderIdAndDishInfoId">
+        SELECT orderdishcomment
+        FROM orderinfo
+        WHERE order_id = #{orderid}
+          and dishinfoid
+        IN (
+        <foreach collection="dishidlist" item="idlist" separator=",">
+            #{idlist}
+        </foreach>
+        )
+    </select>
+
+
+    <insert id="insertCommentsByUserIDAndOrderId">
+        insert INTO
+            comments (comments_content,
+                      comments_user_id,
+                      comments_number,
+                      comments_orderid)
+            VALUE(#{commentsContent},
+            #{commentsUserId},
+            #{commentsNumber},
+            #{commentsOrderid})
+    </insert>
+
+    <select id="selectCountCommentByOrderId">
+        SELECT COUNT(*) FROM comments WHERE comments_orderid = #{orderid}
+    </select>
+<resultMap id="selectCommentByOrderIdResultMap" type="java.util.Map">
+    <result column="comments_content" property="commentsContent"/>
+    <result column="comments_number" property="commentsNumber"/>
+</resultMap>
+
+    <select id="selectCommentByOrderId" resultMap="selectCommentByOrderIdResultMap">
+        select comments_content,comments_number from  comments WHERE comments_orderid = #{orderid}
+    </select>
+
+    <update id="dishCommentByThreeDay">
+        UPDATE dish_information SET dishscore =  dishscore + 5 WHERE dish_infomation_id = #{dishid}
+    </update>
+<!--增加菜品评价-->
+    <update id="dishCommentByDishId">
+        UPDATE dish_information SET dishscore =  dishscore + #{dishpoint} WHERE dish_infomation_id = #{dishid}
+    </update>
+    <update id="dishCommentByOrderId">
+        UPDATE orderinfo SET
+                             orderdishcomment  =  #{dishpoint}
+                         WHERE order_id = #{orderid}
+                           AND dish_infoid = #{dishid}
+    </update>
+    <select id="selectOrdering" parameterType="String" resultType="com.example.graduationproject.entity.Order">
+        SELECT * FROM `order`
+                 WHERE order_uid = #{userid}
+                   AND ordering = #{ordering}
+                   AND  ordertype = 1
+    </select>
+
+    <select id="selectOrderByDiningOptions" parameterType="String">
+        SELECT * FROM `order` WHERE order_uid = #{userid} AND diningoptions = #{diningoptions}
+    </select>
+
+    <select id="selectOrderHaveDishName">
+        SELECT * FROM `order` WHERE order.order_center_id in
+                                    (SELECT order_id FROM orderinfo INNER JOIN dish_information
+                                        ON orderinfo.dish_infoid = dish_information.dish_infomation_id
+                                                     WHERE dish_infoid IN (SELECT dish_infoid FROM `orderinfo`
+                                                                                              WHERE order_id in
+                                                                                                    (SELECT order_center_id FROM `order` WHERE order_uid = #{userid}))
+                                                       AND dish_information.dish_name  LIKE concat('%', #{dishname},'%'))
+    </select>
+
+
+    <select id="selectCartIdInUserId">
+        SELECT car_id FROM cart WHERE cart_uid = #{userid}
+    </select>
+    
+    <select id="selectDishIdInCartId" resultType="com.example.graduationproject.entity.Cartinfo">
+        SELECT dishinfoid,cartdishnumber FROM cartinfo WHERE cartid = #{cartid}
+    </select>
+    <select id="selectCartDishNumberInCartId">
+        SELECT cartdishnumber FROM cartinfo WHERE cartid = #{cartid}
+    </select>
+
+    <insert id="insertCartInfo">
+        insert INTO `orderinfo`
+            (order_id,dish_infoid,order_dish_number)
+        VALUES
+            <foreach collection="cartinfolist" item="clist" separator=",">
+                (#{orderid},#{clist.dishinfoid},#{clist.cartdishnumber})
+            </foreach>
+    </insert>
+
 
 </mapper>

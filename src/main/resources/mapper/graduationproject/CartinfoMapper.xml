@@ -23,17 +23,13 @@
             resultMap="getUserCartResultMap"
             parameterType="String">
         SELECT
-            cartinfoid,
-            dish_name,
-            picture,
-            cartdishnumber,
-            carttotalprice
+            *
         FROM
             `cart`
                 INNER JOIN `user` on cart.cart_uid = `user`.u_id
                 INNER JOIN `cartinfo` ON cart.car_id = cartinfo.cartid
                 INNER JOIN `dish_information` on cartinfo.dishinfoid = dish_information.dish_infomation_id
-        WHERE cart.cart_uid = #{userid}
+        WHERE cart.cart_uid = #{userid};
     </select>
 
 
@@ -54,7 +50,6 @@
         <association property="dishInformation"
                      resultMap="getdishInformationByCartInfoIdResultMap"
                      javaType="com.example.graduationproject.entity.DishInformation">
-
                 <result column="dish_name" property="dishName" />
                 <result column="dish_histories" property="dishHistories" />
                 <result column="praise_len" property="praiseLen" />
@@ -81,7 +76,4 @@
                 ON cartinfo.dishinfoid = dish_information.dish_infomation_id
         where cartinfoid = #{cartinfoid}
     </select>
-
-
-
 </mapper>

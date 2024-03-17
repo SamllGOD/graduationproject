@@ -35,4 +35,27 @@ public interface DishInformationMapper extends BaseMapper<DishInformation> {
    void DeleteDishByDishIdAndDishBuId(String dishid,String buid);
 
    void AddDishFromBuId(DishInformation dishInformation);
+
+   List<DishInformation> selectNewDish();
+
+   List<DishInformation> selectLiMitFiveDish();
+
+   //获取肉菜
+   List<DishInformation> selectMysqlByDishCategory();
+   //获取蔬菜
+   List<DishInformation> selectMysqlByDishCategory2();
+
+   List<DishInformation> selectMysqlByDishCategory3();
+
+   List<DishInformation> selectMysqlByDishCategory4();
+
+   List<DishInformation> selectZhuDish(Double Average,Integer dishcategoryzhuNumber);
+
+   List<DishInformation> selectshucai(Double Average,Integer dishcategoryshuNumber);
+
+   List<DishInformation> selecttangpin(Double Average,Integer dishcategorytangNumber);
+
+   List<DishInformation> selectroulei(Double Average,Integer dishcategoryRouNumber);
+
+   List<DishInformation> selectdacai(Integer dishcategoryRouNumber);
 }

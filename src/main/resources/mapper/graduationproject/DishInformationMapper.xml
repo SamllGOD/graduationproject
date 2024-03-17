@@ -149,6 +149,75 @@
          #{dishCareers},#{dishBuid},#{dishType})
 </insert>
 
+    <select id="selectNewDish">
+        SELECT
+            *
+        FROM
+            dish_information
+        ORDER BY
+            create_time
+                DESC
+            LIMIT 5
+    </select>
+
+    <select id="selectLiMitFiveDish">
+        SELECT
+            *
+        FROM
+            dish_information
+        WHERE
+            CAST(dishscore/dishsold AS DECIMAL(8,2)) > 3.6
+        ORDER BY
+            RAND()
+            LIMIT 5
+    </select>
+
+    <select id="selectZhuDish">
+        select * from
+                     dish_information
+                 where  #{Average} > price
+        AND dish_category = "0"
+                 order by
+                     rand() LIMIT #{dishcategoryzhuNumber};
+    </select>
+
+    <select id="selectshucai">
+        select * from
+            dish_information
+        where  #{Average} > price
+          AND dish_category = "2"
+        order by
+            rand() LIMIT #{dishcategoryshuNumber};
+    </select>
+
+    <select id="selecttangpin">
+        select * from
+            dish_information
+        where  #{Average} > price
+          AND dish_category = "1"
+        order by
+            rand() LIMIT #{dishcategorytangNumber};
+    </select>
+
+    <select id="selectroulei">
+        select * from
+            dish_information
+        where  #{Average} > price
+          AND dish_category = "3"
+        order by
+            rand() LIMIT #{dishcategoryRouNumber};
+    </select>
+
+    <select id="selectdacai">
+        SELECT * FROM
+                     dish_information
+                 WHERE price > 79
+                 ORDER BY RAND() LIMIT #{bigdishnumber}
+    </select>
+
+
+
+
 
 
 </mapper>

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@TableName(value ="dishrecommend", autoResultMap = true)
+@TableName(value ="comments", autoResultMap = true)
 public class Comments implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -2,4 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.graduationproject.mapper.CartMapper">
 
+    <select id="selectCartIdByUserId" resultType="String">
+        SELECT
+            car_id
+        FROM
+            cart
+        WHERE
+            cart_uid = #{userid}
+    </select>
+    <select id="dishJoinCartByUserId">
+        INSERT INTO
+            cartinfo (cartid,dishinfoid,cartdishnumber,carttotalprice)
+        VALUES (#{cartid},#{dishinfoid},#{cartdishnumber},#{carttotalprice})
+    </select>
+    <update id="upCartInfoDishNumber">
+        UPDATE
+            cartinfo
+        SET
+            cartdishnumber = #{cartdishnumber}
+        WHERE cartinfoid = #{cartinfoid}
+    </update>
+
+    <delete id="deleteCartDishByCartInfoId">
+        DELETE
+        FROM
+            cartinfo
+        WHERE
+            cartinfoid = #{cartinfoid}
+    </delete>
+
+
+
 </mapper>

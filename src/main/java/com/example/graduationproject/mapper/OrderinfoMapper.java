@@ -24,4 +24,6 @@ public interface OrderinfoMapper extends BaseMapper<Orderinfo> {
 
     List<Map<String,Object>> getOrderByBuId(String buid);
 
+    void uporderdishmeals(String dishid);
+
 }

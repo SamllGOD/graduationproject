@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping("alipay")
 @Transactional(rollbackFor = Exception.class)
 public class AliPayController {
-    private static final String GATEWAY_URL = "https://openapi-sandbox.dl.alipaydev.com/qateway.do";
+    private static final String GATEWAY_URL = "https://openapi-sandbox.dl.alipaydev.com/gateway.do";
     private static  final String FORMAT = "JSON";
     private static final String CHARSET = "UTF-8";
     //签名方式
@@ -74,7 +74,6 @@ public class AliPayController {
             for (String name : requestParams.keySet()){
                 params.put(name,request.getParameter(name));
             }
-
             String sign = params.get("sign");
             String content = AlipaySignature.getSignCheckContentV1(params);
             boolean checkSignature = AlipaySignature.rsa256CheckContent(content,sign,aliPayConfig.getAlipayPublicKey(),"UTF-8");
@@ -93,14 +92,14 @@ public class AliPayController {
                 String gmtPayment = params.get("gmt_payment");//支付时间
                 String alipayTradeNo = params.get("trade_no");//支付宝交易编号
                 //更新订单状态为已支付，设置支付信息
-                Order order = orderService.selectByOrderNo(tradeNo);
+//                Order order = orderService.selectByOrderNo(tradeNo);
                 //设置订单状态为已支付
 
                 //设置支付时间
 
-                //设置订单号
+                //设置支付宝交易凭证号
 
-                //更新订单
+                //删除购物车中的商品
 
 
             }

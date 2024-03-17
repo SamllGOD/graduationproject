@@ -71,6 +71,7 @@
         <result column="order_meals" property="orderMeals" />
         <result column="dish_infoid" property="dishInfoid" />
     </resultMap>
+
     <select id="getOrderMealsByOrderId"
             resultMap="getOrderInfoMap"
             parameterType="String">
@@ -100,6 +101,17 @@
         FROM `order`
         WHERE order_buid = #{buid}
     </select>
+
+
+    <update id="uporderdishmeals">
+        UPDATE
+            orderinfo
+        SET
+            order_meals = 1
+        WHERE
+            dish_infoid =  #{dishid}
+    </update>
+
 
 
 

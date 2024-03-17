@@ -23,4 +23,6 @@ public interface IOrderinfoService extends IService<Orderinfo> {
     Map<String, Object> getOrderDishByOrderId(String orderid);
 
     Map<String, Object> getDishByOrderId(String[] orderid);
+
+    void uporderdishmeals(String dishid);
 }
