@@ -13,4 +13,5 @@ import com.example.graduationproject.entity.Comments;
  */
 public interface ICommentsService extends IService<Comments> {
 
+
 }

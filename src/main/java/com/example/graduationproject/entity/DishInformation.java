@@ -181,6 +181,10 @@ public class DishInformation implements Serializable {
 
    private Integer dishCategory;
 
+   private Integer dishscore;
+
+   private Integer dishsold;
+
 
 
 
@@ -477,6 +481,23 @@ public class DishInformation implements Serializable {
         this.dishCategory = dishCategory;
     }
 
+
+    public Integer getDishscore() {
+        return dishscore;
+    }
+
+    public void setDishscore(Integer dishscore) {
+        this.dishscore = dishscore;
+    }
+
+    public Integer getDishsold() {
+        return dishsold;
+    }
+
+    public void setDishsold(Integer dishsold) {
+        this.dishsold = dishsold;
+    }
+
     @Override
     public String toString() {
         return "DishInformation{" +
@@ -515,7 +536,9 @@ public class DishInformation implements Serializable {
                 ", praiseLenQt='" + praiseLenQt + '\'' +
                 ", dishBuid=" + dishBuid +
                 ", dishType='" + dishType + '\'' +
-                ", dish_category=" + dishCategory +
+                ", dishCategory=" + dishCategory +
+                ", dishscore=" + dishscore +
+                ", dishsold=" + dishsold +
                 '}';
     }
 }

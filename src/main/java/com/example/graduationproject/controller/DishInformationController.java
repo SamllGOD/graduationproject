@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -122,6 +124,70 @@ public class DishInformationController {
         iDishInformationService.AddDishFromBuId(dishInformation);
         return Result.success("增加成功");
     }
+    @GetMapping("getDishByCreateTime")
+    public Result<?> getDishByCreateTime(){
+      Map<String,Object> data  =  iDishInformationService.getDishByCreateTime();
+      return Result.success(data);
+    }
+
+    @GetMapping("getDishByMySelf")
+    public Result<?> getDishByMySelf(@RequestParam("price") String price,
+                                     @RequestParam("dishnumber") Integer dishnumber,
+                                     @RequestParam("dishcategory") String dishcategory){
+
+     Map<String,Object>  data = iDishInformationService.getDishByMySelf();
+    return null;
+
+    }
+
+    //系统自助配菜
+    @GetMapping("getDishByPriceCommend")
+    public Result<?> getDishByPriceCommend(@RequestParam("totalprice") Double price, //总价
+                                           @RequestParam("rulesdish")  Integer rulesDish,//优先满足
+                                           @RequestParam("dishcategoryRouNumber") Integer dishcategoryRouNumber,//需要肉菜数量
+                                           @RequestParam("dishcategoryshuNumber") Integer dishcategoryshuNumber,//需要蔬菜数量
+                                           @RequestParam("dishcategorytangNumber") Integer dishcategorytangNumber,//需要汤品数量
+                                           @RequestParam("dishcategoryzhuNumber") Integer dishcategoryzhuNumber//需要主食数量
+                                                                                                                 ){
+
+        Map<String,Object>  data = iDishInformationService.getDishByPriceCommend(price,
+                                                                rulesDish,
+                                                                dishcategoryRouNumber,
+                                                                 dishcategoryshuNumber,
+                                                                     dishcategorytangNumber,
+                                                                        dishcategoryzhuNumber);
+    if (data != null){
+        return Result.success(data);
+    }
+return Result.fail("未获得数据");
+    }
+    //系统自助配菜
+    @GetMapping("getMyselfPointDish")
+    public Result<?> getMyselfPointDish(   @RequestParam("totalprice") Double price, //总价
+                                           @RequestParam("bigdishnumber")  Integer bigdishnumber,//大菜
+                                           @RequestParam("dishcategoryRouNumber") Integer dishcategoryRouNumber,//需要肉菜数量
+                                           @RequestParam("dishcategoryshuNumber") Integer dishcategoryshuNumber,//需要蔬菜数量
+                                           @RequestParam("dishcategorytangNumber") Integer dishcategorytangNumber,//需要汤品数量
+                                           @RequestParam("dishcategoryzhuNumber") Integer dishcategoryzhuNumber//需要主食数量
+    ){
+        System.out.println("price:"+price);
+        System.out.println("bigdishnumber:"+bigdishnumber);
+        System.out.println("dishcategoryRouNumber:"+dishcategoryRouNumber);
+        System.out.println("dishcategoryshuNumber:"+dishcategoryshuNumber);
+        System.out.println("dishcategorytangNumber:"+dishcategorytangNumber);
+        System.out.println("dishcategoryzhuNumber:"+dishcategoryzhuNumber);
+        Map<String,Object>  data = iDishInformationService.getMyselfPointDish(price,
+                bigdishnumber,
+                dishcategoryRouNumber,
+                dishcategoryshuNumber,
+                dishcategorytangNumber,
+                dishcategoryzhuNumber);
+        if (data != null){
+            return Result.success(data);
+        }
+        return Result.fail("未获得数据");
+    }
+
 
 
 

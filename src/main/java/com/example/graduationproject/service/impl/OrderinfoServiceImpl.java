@@ -10,6 +10,7 @@ import com.example.graduationproject.mapper.OrderinfoMapper;
 import com.example.graduationproject.service.IOrderinfoService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,4 +63,11 @@ public class OrderinfoServiceImpl extends ServiceImpl<OrderinfoMapper, Orderinfo
         map.put("dishmessage",dishByOrderId);
         return map;
     }
+
+    @Override
+    public void uporderdishmeals(String dishid) {
+        this.baseMapper.uporderdishmeals(dishid);
+    }
+
+
 }

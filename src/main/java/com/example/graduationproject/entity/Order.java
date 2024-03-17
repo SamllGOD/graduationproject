@@ -53,6 +53,16 @@ public class Order implements Serializable {
     private Integer orderDe;
 
     private  Integer orderDinid;
+    
+    private Integer orderNumber;
+
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime orderCreateTime;
+
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime orderPayTime;
 
 
     public Integer getOrderCenterId() {
@@ -192,6 +202,30 @@ public class Order implements Serializable {
         this.rder_name = rder_name;
     }
 
+    public LocalDateTime getOrderCreateTime() {
+        return orderCreateTime;
+    }
+
+    public void setOrderCreateTime(LocalDateTime orderCreateTime) {
+        this.orderCreateTime = orderCreateTime;
+    }
+
+    public Integer getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(Integer orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public LocalDateTime getOrderPayTime() {
+        return orderPayTime;
+    }
+
+    public void setOrderPayTime(LocalDateTime orderPayTime) {
+        this.orderPayTime = orderPayTime;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -212,6 +246,9 @@ public class Order implements Serializable {
                 ", ordertype=" + ordertype +
                 ", orderDe=" + orderDe +
                 ", orderDinid=" + orderDinid +
+                ", orderNumber=" + orderNumber +
+                ", orderCreateTime=" + orderCreateTime +
+                ", orderPayTime=" + orderPayTime +
                 '}';
     }
 }

@@ -17,4 +17,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements ICartService {
 
+    @Override
+    public void dishjoincart(String userid, String dishinfoid, Integer cartdishnumber, Double carttotalprice) {
+        String cartid = this.baseMapper.selectCartIdByUserId(userid);
+        System.out.println(cartid);
+        this.baseMapper.dishJoinCartByUserId(cartid,dishinfoid,cartdishnumber,carttotalprice);
+    }
+
+    @Override
+    public void upCartInfoDishNumber(String cartdishnumber,String  cartinfoid) {
+        this.baseMapper.upCartInfoDishNumber(cartdishnumber,cartinfoid);
+    }
+
+    @Override
+    public void deleteCartDishByCartInfoId(String cartinfoid) {
+        this.baseMapper.deleteCartDishByCartInfoId(cartinfoid);
+    }
 }
