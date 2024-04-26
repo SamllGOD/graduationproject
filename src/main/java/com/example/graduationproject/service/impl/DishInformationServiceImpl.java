@@ -360,7 +360,6 @@ public class DishInformationServiceImpl extends ServiceImpl<DishInformationMappe
                                                   Integer dishcategoryshuNumber,
                                                   Integer dishcategorytangNumber,
                                                   Integer dishcategoryzhuNumber) {
-
         //获取需要的菜品总数量
         Integer countdish = dishcategoryRouNumber+
                 dishcategoryshuNumber+
@@ -420,11 +419,6 @@ public class DishInformationServiceImpl extends ServiceImpl<DishInformationMappe
             price= map1.get("price");
             Average = map1.get("Average");
         }
-
-
-
-
-
         map.put("haveprice",price);
         return map;
     }

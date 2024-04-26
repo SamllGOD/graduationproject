@@ -2,10 +2,15 @@ package com.example.graduationproject.controller;
 
 
 
+import com.example.graduationproject.common.vo.Result;
+import com.example.graduationproject.entity.Comments;
 import com.example.graduationproject.service.ICommentsService;
 import jakarta.annotation.Resource;
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -27,5 +32,12 @@ public class CommentsController {
 //        iCommentsService.save(comments);
 //         return  Result.success("评价成功");
 //    }
+
+
+//    查看店铺评论
+
+
+
+
 
 }

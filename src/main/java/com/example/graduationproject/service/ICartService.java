@@ -15,7 +15,7 @@ public interface ICartService extends IService<Cart> {
 
     void dishjoincart(String userid, String dishinfoid, Integer cartdishnumber, Double carttotalprice);
 
-    void upCartInfoDishNumber(  String cartdishnumber,String cartinfoid);
+    void upCartInfoDishNumber(  String cartdishnumber,String cartinfoid,Double carttotalprice);
 
     void deleteCartDishByCartInfoId(String cartinfoid);
 }

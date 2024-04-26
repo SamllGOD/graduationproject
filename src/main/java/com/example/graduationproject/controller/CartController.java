@@ -34,8 +34,9 @@ public Result<?> dishjoincart(@RequestParam("userid") String userid,
 
     @PatchMapping("upCartInfoDishNumber")
     public Result<?> upCartInfoDishNumber(@RequestParam("cartdishnumber") String cartdishnumber,
-                                            @RequestParam("cartinfoid")  String cartinfoid){
-        iCartService.upCartInfoDishNumber(cartdishnumber,cartinfoid);
+                                            @RequestParam("cartinfoid")  String cartinfoid,
+                                          @RequestParam("carttotalprice")  Double carttotalprice){
+        iCartService.upCartInfoDishNumber(cartdishnumber,cartinfoid,carttotalprice);
         return Result.success("修改成功");
     }
 

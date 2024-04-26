@@ -39,18 +39,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(User::getuName, user.getuName());
         wrapper.eq(User::getuPwd, user.getuPwd());
-
         User loginuser = this.baseMapper.selectOne(wrapper);
         if (loginuser != null){
             //uuid生成token
             String key  = "user:" + UUID.randomUUID();
-
             //存入redis
             redisTemplate.opsForValue().set(key,loginuser,30, TimeUnit.MINUTES);
             //返回数据
             Map<String,Object> data = new HashMap<>();
             data.put("token",key);
-
             return data;
         }
 //        if (!user.getuPwd().equals(loginuser.getuPwd())){
@@ -99,6 +96,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public void userlogout(String token) {
         Boolean delete = redisTemplate.delete(token);
-
     }
 }

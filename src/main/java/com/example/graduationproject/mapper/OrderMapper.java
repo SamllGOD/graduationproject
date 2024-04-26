@@ -1,5 +1,6 @@
 package com.example.graduationproject.mapper;
 
+import cn.hutool.core.date.DateTime;
 import com.example.graduationproject.entity.*;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.Setter;
@@ -25,6 +26,8 @@ public interface OrderMapper extends BaseMapper<Order> {
 
   public   Order selectByOrderId(String orderid);
    public void insertOrder(Order order);
+
+    public void insertOrderByMeal(Order order);
 
 
    List<Order> selectOrderByUserId(String userid);
@@ -62,4 +65,26 @@ public interface OrderMapper extends BaseMapper<Order> {
      List<Integer> selectCartDishNumberInCartId(Integer cartid);
 
      void insertCartInfo(Integer orderid,List<Cartinfo> cartinfolist);
+
+//     修改订单状态
+     void UpOrderType(String orderid);
+
+     void UpOrderPayTime(String orderpaytime,String orderid);
+
+     void DeCartInfoDish(String orderid);
+
+    void UpTableInfo(String orderid);
+
+    List<Map<String,Object>> getUserComment();
+
+    List<String> getDishNameByOrderId(String orderid);
+
+    List<Map<String,Object>> getCommentById(String commentsid);
+
+    void  AddBusinessCommentsByID(String commentsid,String buCommentsInfo);
+
+    List<Orderinfo> getOrderDishNumberByOrderId(String orderid);
+
+    void upDishSoldByDishInfoId(List<Orderinfo> orderDishSold);
+
 }

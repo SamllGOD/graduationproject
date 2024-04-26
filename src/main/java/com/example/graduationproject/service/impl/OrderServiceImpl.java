@@ -31,7 +31,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public Integer addorder(Order order,String userid) {
-        this.baseMapper.insertOrder(order);
+
+        System.out.println(order.getOrderDinid() + order.getDiningoptions());
+        if (order.getDiningoptions().equals("堂食")){
+            this.baseMapper.insertOrder(order);
+        }else if (order.getDiningoptions().equals("自提")){
+            this.baseMapper.insertOrderByMeal(order);
+        }
 //        获取自增id
         Integer orderid = order.getOrderCenterId();
 //        根据用户id获取用户购物车id
@@ -121,6 +127,59 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         HashMap<String, Object> map = new HashMap<>();
         map.put("ordershavedishname",orders);
         return map;
+    }
+
+    public void  upOrderType(String orderid){
+        this.baseMapper.UpOrderType(orderid);
+    }
+
+    public void  upOrderPayTime(String orderpaytime, String orderid){
+        this.baseMapper.UpOrderPayTime(orderpaytime,orderid);
+    }
+
+
+    public void  deCartInfoDish( String orderid){
+        this.baseMapper.DeCartInfoDish(orderid);
+    }
+    public void  upTableInfo( String orderid){
+        this.baseMapper.UpTableInfo(orderid);
+    }
+
+    @Override
+    public Map<String, Object> getUserComment() {
+        HashMap<String, Object> map = new HashMap<>();
+        List<Map<String,Object>> userComment = this.baseMapper.getUserComment();
+        System.out.println(userComment);
+        List<String> dishNameByOrderId = this.baseMapper.getDishNameByOrderId("178");
+        System.out.println(dishNameByOrderId);
+        map.put("usercomment",userComment);
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> getDishName(String userid, String commentsOrderid, String commentsId) {
+        HashMap<String, Object> map = new HashMap<>();
+        //菜品名称
+        List<String> dishNameByOrderId = this.baseMapper.getDishNameByOrderId(commentsOrderid);
+        map.put("dishname",dishNameByOrderId);
+        System.out.println(dishNameByOrderId);
+        //根据评价id获取到评价信息以及商家追评信息
+        List<Map<String, Object>> commentById = this.baseMapper.getCommentById(commentsId);
+        map.put("commentsInfo",commentById);
+        System.out.println(commentById);
+        //
+        return map;
+    }
+
+    @Override
+    public void addbusinessCommentsByID(String commentsid,String buCommentsInfo) {
+        this.baseMapper.AddBusinessCommentsByID(commentsid,buCommentsInfo);
+    }
+
+    @Override
+    public void getOrderDishNumberByOrderId(String orderid) {
+        List<Orderinfo> orderDishNumberByOrderId = this.baseMapper.getOrderDishNumberByOrderId(orderid);
+        this.baseMapper.upDishSoldByDishInfoId(orderDishNumberByOrderId);
     }
 
 

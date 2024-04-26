@@ -33,6 +33,7 @@ public class Orderinfo {
     private Integer orderDishNumber;
 
     private Integer orderdishcomment;
+    private Integer orderYesComment;
 
 
 
@@ -102,6 +103,14 @@ public class Orderinfo {
         this.orderdishcomment = orderdishcomment;
     }
 
+    public Integer getOrderYesComment() {
+        return orderYesComment;
+    }
+
+    public void setOrderYesComment(Integer orderYesComment) {
+        this.orderYesComment = orderYesComment;
+    }
+
     @Override
     public String toString() {
         return "Orderinfo{" +
@@ -113,6 +122,7 @@ public class Orderinfo {
                 ", orderMeals='" + orderMeals + '\'' +
                 ", orderDishNumber=" + orderDishNumber +
                 ", orderdishcomment=" + orderdishcomment +
+                ", orderYesComment=" + orderYesComment +
                 '}';
     }
 }

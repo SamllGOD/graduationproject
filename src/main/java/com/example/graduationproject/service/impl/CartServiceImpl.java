@@ -25,8 +25,8 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
     }
 
     @Override
-    public void upCartInfoDishNumber(String cartdishnumber,String  cartinfoid) {
-        this.baseMapper.upCartInfoDishNumber(cartdishnumber,cartinfoid);
+    public void upCartInfoDishNumber(String  cartinfoid,String cartdishnumber,Double carttotalprice) {
+        this.baseMapper.upCartInfoDishNumber(cartdishnumber,cartinfoid,carttotalprice);
     }
 
     @Override

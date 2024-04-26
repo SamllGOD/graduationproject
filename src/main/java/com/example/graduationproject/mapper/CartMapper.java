@@ -21,7 +21,7 @@ public interface CartMapper extends BaseMapper<Cart> {
 
  void dishJoinCartByUserId(String cartid, String dishinfoid, Integer cartdishnumber, Double carttotalprice);
 
- void upCartInfoDishNumber( String cartdishnumber,String cartinfoid);
+ void upCartInfoDishNumber( String cartdishnumber,String cartinfoid,Double carttotalprice);
 
  void deleteCartDishByCartInfoId(String cartinfoid);
 

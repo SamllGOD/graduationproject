@@ -98,32 +98,31 @@ public class OrderController {
             return Result.success(data);
         }return Result.fail("无数据");
     }
+    @GetMapping("/GetAllComment")
+    public Result<?> getAllComment(){
+        Map<String,Object> userComment = iOrderService.getUserComment();
+        return Result.success(userComment);
+    }
+    @GetMapping("/GetDishName")
+    public Result<?> getDishname(@RequestParam("userid") String userid,
+                                 @RequestParam("commentsOrderid") String commentsOrderid,
+                                 @RequestParam("commentsId") String commentsId){
+        Map<String,Object> userComment = iOrderService.getDishName(userid,commentsOrderid,commentsId);
 
+            return Result.success(userComment);
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @GetMapping("/addbusinessCommentsByID")
+    public  Result<?> addbusinessCommentsByID(@RequestParam("commentsid") String commentsid,
+                                              @RequestParam("buCommentsInfo") String buCommentsInfo){
+        iOrderService.addbusinessCommentsByID(commentsid,buCommentsInfo);
+        return Result.success("回复成功");
+    }
+//    测试接口
+    @GetMapping("/test")
+    public Result<?> getOrderDishNumberByOrderId(@RequestParam("orderid") String orderid){
+        iOrderService.getOrderDishNumberByOrderId(orderid);
+            return null;
+    }
 }

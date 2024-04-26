@@ -24,11 +24,7 @@ public class Order implements Serializable {
 
     private String payType;
 
-//    订单号
-    private Integer order_number;
 
-    //支付名称
-    private String rder_name;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -56,13 +52,10 @@ public class Order implements Serializable {
     
     private Integer orderNumber;
 
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime orderCreateTime;
 
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime orderPayTime;
+
+
+    private String orderPayType;
 
 
     public Integer getOrderCenterId() {
@@ -186,29 +179,6 @@ public class Order implements Serializable {
         this.orderDinid = orderDinid;
     }
 
-    public Integer getOrder_number() {
-        return order_number;
-    }
-
-    public void setOrder_number(Integer order_number) {
-        this.order_number = order_number;
-    }
-
-    public String getRder_name() {
-        return rder_name;
-    }
-
-    public void setRder_name(String rder_name) {
-        this.rder_name = rder_name;
-    }
-
-    public LocalDateTime getOrderCreateTime() {
-        return orderCreateTime;
-    }
-
-    public void setOrderCreateTime(LocalDateTime orderCreateTime) {
-        this.orderCreateTime = orderCreateTime;
-    }
 
     public Integer getOrderNumber() {
         return orderNumber;
@@ -218,13 +188,14 @@ public class Order implements Serializable {
         this.orderNumber = orderNumber;
     }
 
-    public LocalDateTime getOrderPayTime() {
-        return orderPayTime;
+    public String getOrderPayType() {
+        return orderPayType;
     }
 
-    public void setOrderPayTime(LocalDateTime orderPayTime) {
-        this.orderPayTime = orderPayTime;
+    public void setOrderPayType(String orderPayType) {
+        this.orderPayType = orderPayType;
     }
+
 
     @Override
     public String toString() {
@@ -234,8 +205,6 @@ public class Order implements Serializable {
                 ", totalPrice=" + totalPrice +
                 ", payStay='" + payStay + '\'' +
                 ", payType='" + payType + '\'' +
-                ", order_number=" + order_number +
-                ", rder_name='" + rder_name + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", recommend='" + recommend + '\'' +
@@ -247,8 +216,7 @@ public class Order implements Serializable {
                 ", orderDe=" + orderDe +
                 ", orderDinid=" + orderDinid +
                 ", orderNumber=" + orderNumber +
-                ", orderCreateTime=" + orderCreateTime +
-                ", orderPayTime=" + orderPayTime +
+                ", orderPayType='" + orderPayType + '\'' +
                 '}';
     }
 }

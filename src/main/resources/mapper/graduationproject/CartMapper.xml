@@ -19,7 +19,9 @@
         UPDATE
             cartinfo
         SET
-            cartdishnumber = #{cartdishnumber}
+            cartdishnumber = #{cartdishnumber},
+            carttotalprice = #{carttotalprice}
+
         WHERE cartinfoid = #{cartinfoid}
     </update>
 

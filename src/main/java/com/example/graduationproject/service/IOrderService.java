@@ -1,6 +1,5 @@
 package com.example.graduationproject.service;
 
-import com.example.graduationproject.entity.Comments;
 import com.example.graduationproject.entity.Order;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -38,4 +37,20 @@ public interface IOrderService extends IService<Order> {
     Map<String, Object> selectOrderByDiningOptions(String userid, String diningoptions);
 
     Map<String, Object> selectOrderHaveDishName(String userid, String dishname);
+
+    void upOrderType(String orderid);
+
+    void upOrderPayTime(String orderpaytime,String orderid);
+
+    void deCartInfoDish(String orderid);
+
+    void upTableInfo(String orderid);
+
+    Map<String, Object> getUserComment();
+
+    Map<String, Object> getDishName(String userid, String commentsOrderid, String commentsId);
+
+    void addbusinessCommentsByID(String commentsid,String buCommentsInfo);
+
+    void getOrderDishNumberByOrderId(String orderid);
 }

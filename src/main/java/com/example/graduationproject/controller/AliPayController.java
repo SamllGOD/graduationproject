@@ -92,16 +92,19 @@ public class AliPayController {
                 String gmtPayment = params.get("gmt_payment");//支付时间
                 String alipayTradeNo = params.get("trade_no");//支付宝交易编号
                 //更新订单状态为已支付，设置支付信息
-//                Order order = orderService.selectByOrderNo(tradeNo);
                 //设置订单状态为已支付
-
+                orderService.upOrderType(tradeNo);
                 //设置支付时间
-
+                orderService.upOrderPayTime(gmtPayment,tradeNo);
                 //设置支付宝交易凭证号
-
                 //删除购物车中的商品
-
-
+                orderService.deCartInfoDish(tradeNo);
+//                商品已售增加售出的菜品数 tradeNo是订单id 通过订单id在订单菜品表查看订单中的菜品有哪些以及数量有多少
+                orderService.getOrderDishNumberByOrderId(tradeNo);
+                //如果是堂食则将该餐桌设为正在使用
+                if (params.get("subject").equals("堂食")){
+                    orderService.upTableInfo(tradeNo);
+                }
             }
          }
     }

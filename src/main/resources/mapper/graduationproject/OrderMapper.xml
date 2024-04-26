@@ -22,6 +22,16 @@
         VALUES ( #{purchaseQuantity},#{totalPrice},#{orderUid},#{orderBuid},#{diningoptions},#{orderDinid})
     </insert>
 
+    <insert id="insertOrderByMeal"
+            parameterType="com.example.graduationproject.entity.Order"
+            useGeneratedKeys="true"
+            keyProperty="orderCenterId">
+        INSERT INTO
+            `order`
+        (purchase_quantity,total_price,order_uid,order_buid,diningoptions)
+        VALUES ( #{purchaseQuantity},#{totalPrice},#{orderUid},#{orderBuid},#{diningoptions})
+    </insert>
+
 <!--    <insert id="batchInsertOrderInfo"-->
 <!--            parameterType="java.util.List">-->
 <!--        insert into `orderinfo` (order_id,dish_infoid,order_meals) VALUES-->
@@ -62,6 +72,7 @@
         <result column="order_meals" property="orderMeals"/>
         <result column="order_dish_number" property="orderDishNumber"/>
         <result column="orderdishcomment" property="orderdishcomment"/>
+        <result column="orderYesComment" property="orderYesComment"/>
     </resultMap>
     <resultMap id="getorderdishresultmap" type="java.util.HashMap">
                     <id column="dish_infomation_id" property="dishInfomationId"/>
@@ -83,7 +94,8 @@
                dish_name,
                order_meals,
                order_dish_number,
-                 orderdishcomment
+                orderdishcomment,
+                orderYesComment
                 FROM
                      `dish_information`
                          inner join `orderinfo`
@@ -144,7 +156,8 @@
     </update>
     <update id="dishCommentByOrderId">
         UPDATE orderinfo SET
-                             orderdishcomment  =  #{dishpoint}
+                             orderdishcomment  =  #{dishpoint},
+                             orderYesComment = 1
                          WHERE order_id = #{orderid}
                            AND dish_infoid = #{dishid}
     </update>
@@ -190,5 +203,77 @@
             </foreach>
     </insert>
 
+<!--    修改订单状态为已支付-->
+    <update id="UpOrderType">
+        UPDATE `order` set ordertype = 1 WHERE order_center_id = #{orderid}
+    </update>
+
+<!-- 设置支付时间-->
+<update id="UpOrderPayTime">
+    UPDATE `order` set order_pay_type = #{orderpaytime}  WHERE order_center_id = #{orderid}
+</update>
+<!--支付成功后删除购物车中的商品-->
+    <delete id="DeCartInfoDish">
+        DELETE FROM cartinfo WHERE cartid =
+                    (SELECT car_id FROM cart WHERE cart_uid =
+                        (SELECT order_uid FROM `order` WHERE order_center_id = #{orderid}))
+    </delete>
+<!--支付成功后将桌子设置为正在使用-->
+<update id="UpTableInfo">
+    UPDATE table_info SET table_use = 1 WHERE table_id =
+                                              (SELECT order_dinid FROM `order` WHERE order_center_id  = #{orderid})
+</update>
+    <resultMap id="getUserComentResultMap" type="java.util.Map">
+        <result property="commentsId" column="comments_id"/>
+        <result property="commentsNumber" column="comments_number"/>
+        <result property="commentsContent" column="comments_content"/>
+        <result property="commentsReply " column="comments_reply"/>
+        <result property="commentsUserId" column="comments_user_id"/>
+        <result property="commentsOrderid" column="comments_orderid"/>
+    </resultMap>
+    <select id="getUserComment" resultMap="getUserComentResultMap">
+        SELECT
+            comments_id,
+            comments_number,
+            comments_content,
+            comments_reply,
+            comments_user_id,
+            comments_orderid
+        from
+            comments
+    </select>
+
+    <select id="getDishNameByOrderId" parameterType="String">
+        SELECT dish_name FROM dish_information
+                         WHERE dish_infomation_id
+                                   IN (select dish_infoid FROM orderinfo where order_id = #{orderid})
+    </select>
+    <resultMap id="getCommentByIdResultMap" type="java.util.Map">
+        <result property="commentsId" column="comments_id"/>
+        <result property="commentsContent" column="comments_content"/>
+        <result property="commentsReply" column="comments_reply"/>
+    </resultMap>
+    <select id="getCommentById" parameterType="String" resultMap="getCommentByIdResultMap">
+        SELECT
+            comments_id,
+            comments_content,
+            comments_reply
+        from
+            comments WHERE comments_id = #{commentsid}
+    </select>
+
+    <update id="AddBusinessCommentsByID" parameterType="String">
+        UPDATE comments SET comments_reply = #{buCommentsInfo} WHERE comments_id = #{commentsid}
+    </update>
+
+    <select id="getOrderDishNumberByOrderId">
+        SELECT order_dish_number,dish_infoid FROM orderinfo WHERE order_id = #{orderid}
+    </select>
+
+    <update id="upDishSoldByDishInfoId">
+                 <foreach collection="orderDishSold" item="dlist" separator=";">
+     UPDATE `dish_information` SET dishsold = dishsold + #{dlist.orderDishNumber} WHERE dish_infomation_id = #{dlist.dishInfoid}
+                 </foreach>
+    </update>
 
 </mapper>
